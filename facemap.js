@@ -1,3 +1,4 @@
+//-- Código del custom marker de https://codepen.io/dylanvann/pen/yNWdxJ
 CustomMarker.prototype = new google.maps.OverlayView();
 
 function CustomMarker(opts) {
@@ -9,7 +10,6 @@ CustomMarker.prototype.draw = function() {
     var div = this.div;
     if (!div) {
         div = this.div = $('' +
-           // '<div class="pulse"></div>' +
             '<div class="pulse-container">' +
                 '<div class="pulse-box">' +
                     '<svg class="pulse-svg">' +
@@ -369,32 +369,30 @@ window.addEventListener('load', function () {
                 icon9 = '../map-test/icons/9.png',
                 icon10 = '../map-test/icons/10.png';
             seisms.forEach(function(seism, index, arr) {
-                seism.localDateTime = new Date($.now());
                 var icon = icon1;
-                if(seism.magnitude > 2.5) {
+                if(seism.properties.intensity > 2.5) {
                     icon = icon3;
                 }
-                if(seism.magnitude >= 3) {
+                if(seism.properties.intensity >= 3) {
                     icon = icon4;
                 }
-                if(seism.magnitude >= 4) {
+                if(seism.properties.intensity >= 4) {
                     icon = icon5;
                 }
-                if(seism.magnitude >= 5) {
+                if(seism.properties.intensity >= 5) {
                     icon = icon6;
                 }
                 var marker = new google.maps.Marker({
                     map: map,
-                    position: new google.maps.LatLng(seism.lat, seism.lon),
-                    title: seism.local,
+                    position: new google.maps.LatLng(seism.geometry.coordinates[0], seism.geometry.coordinates[1]),
                     icon: icon,
                 });         
             });
         };
     function getSeisms(){
-        $.get(url).then(function(result) {
-                allSeisms = result.seisms;
-                addMarkers(allSeisms);
+        $.getJSON('map_18nov.geojson', function (result)  {
+            allSeisms = result.features;
+            addMarkers(allSeisms);
         }, function(error) {
             console.error(error);
         });
