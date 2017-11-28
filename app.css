@@ -1,0 +1,101 @@
+.pulse-box {
+	position: absolute;
+	float: left;
+	width: 50%;
+	height: 250px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  }
+  
+  /* pulse in SVG */
+  svg.pulse-svg {
+	overflow: visible;
+  }
+  svg.pulse-svg .first-circle, svg.pulse-svg .second-circle, svg.pulse-svg .third-circle {
+	fill: #f00;
+	transform: scale(0.5); 
+	transform-origin: center center;
+	animation: pulse-me 3s linear infinite;
+  }
+  svg.pulse-svg .second-circle {
+	animation-delay: 1s;
+  }
+  svg.pulse-svg .third-circle {
+	animation-delay: 2s;
+  }
+
+  @keyframes pulse-me {
+	0% {
+	  transform: scale(0.5);
+	  opacity: 0;
+	}
+	50% {
+	  opacity: 0.1;
+	}
+	70% {
+	  opacity: 0.09;
+	}
+	100% {
+	  transform: scale(5);
+	  opacity: 0;
+	}
+  }
+  /* Del segundo pulso 
+  .pulse {
+	position: absolute;
+	margin-top: -50px;
+	margin-left: -50px;
+	-webkit-transform: rotateX(55deg);
+			transform: rotateX(55deg);
+  }
+  
+  .pulse::after {
+	display: block;
+	width: 100px;
+	height: 100px;
+	content: '';
+	-webkit-animation: pulsate 1s ease-out;
+			animation: pulsate 1s ease-out;
+	-webkit-animation-delay: 1.1s;
+			animation-delay: 1.1s;
+	-webkit-animation-iteration-count: infinite;
+			animation-iteration-count: infinite;
+	opacity: 0;
+	border-radius: 50%;
+	box-shadow: 0 0 1px 2px rgba(0, 0, 0, 0.5);
+	box-shadow: 0 0 6px 3px #f93c11;
+  }
+  
+  @-webkit-keyframes pulsate {
+	0% {
+	  -webkit-transform: scale(0.1, 0.1);
+			  transform: scale(0.1, 0.1);
+	  opacity: 0;
+	}
+	50% {
+	  opacity: 1;
+	}
+	100% {
+	  -webkit-transform: scale(1.2, 1.2);
+			  transform: scale(1.2, 1.2);
+	  opacity: 0;
+	}
+  }
+  
+  @keyframes pulsate {
+	0% {
+	  -webkit-transform: scale(0.1, 0.1);
+			  transform: scale(0.1, 0.1);
+	  opacity: 0;
+	}
+	50% {
+	  opacity: 1;
+	}
+	100% {
+	  -webkit-transform: scale(1.2, 1.2);
+			  transform: scale(1.2, 1.2);
+	  opacity: 0;
+	}
+  }
+  */
