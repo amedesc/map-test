@@ -360,7 +360,7 @@ window.addEventListener('load', function () {
         addMarkers = function(seisms) {
             var icon1 = '../map-test/icons/1.png',
                 icon2 = '../map-test/icons/2.png',
-                icon3 ='../map-test/icons/3.png',
+                icon3 = '../map-test/icons/3.png',
                 icon4 = '../map-test/icons/4.png',
                 icon5 = '../map-test/icons/5.png',
                 icon6 = '../map-test/icons/6.png',
@@ -370,27 +370,47 @@ window.addEventListener('load', function () {
                 icon10 = '../map-test/icons/10.png';
             seisms.forEach(function(seism, index, arr) {
                 var icon = icon1;
-                if(seism.properties.intensity > 2.5) {
-                    icon = icon3;
-                }
-                if(seism.properties.intensity >= 3) {
-                    icon = icon4;
-                }
-                if(seism.properties.intensity >= 4) {
-                    icon = icon5;
-                }
-                if(seism.properties.intensity >= 5) {
-                    icon = icon6;
+                switch(seism.properties.intensity) {
+                    case 1:
+                        icon = icon1;
+                        break;
+                    case 2:
+                        icon = icon2;
+                        break;
+                    case 3:
+                        icon = icon3;
+                        break;
+                    case 4:
+                        icon = icon4;
+                        break;
+                    case 5:
+                        icon = icon5;
+                        break;
+                    case 6:
+                        icon = icon6;
+                        break;
+                    case 7:
+                        icon = icon7;
+                        break;
+                    case 8:
+                        icon = icon8;
+                        break;
+                    case 9:
+                        icon = icon9;
+                        break;
+                    case 10:
+                        icon = icon10;
+                        break;
                 }
                 var marker = new google.maps.Marker({
                     map: map,
-                    position: new google.maps.LatLng(seism.geometry.coordinates[0], seism.geometry.coordinates[1]),
+                    position: new google.maps.LatLng(seism.geometry.coordinates[1], seism.geometry.coordinates[0]),
                     icon: icon,
                 });         
             });
         };
     function getSeisms(){
-        $.getJSON('map_18nov.geojson', function (result)  {
+        $.getJSON('https://raw.githubusercontent.com/amedesc/map-test/master/map_18nov.geojson', function (result)  {
             allSeisms = result.features;
             addMarkers(allSeisms);
         }, function(error) {
