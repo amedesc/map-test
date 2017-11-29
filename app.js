@@ -174,7 +174,7 @@ window.addEventListener('load', function () {
                 "elementType": "geometry.fill",
                 "stylers": [
                     {
-                        "color": "#a2d0ee"
+                        "color": "#9fd1ff"
                     },
                     {
                         "gamma": "1.00"
@@ -188,9 +188,9 @@ window.addEventListener('load', function () {
             'getWebMapSeisms' +
             '?access_token=559aca63553be4973f58dbc1',
         addMarkers = function(seisms) {
-            var normalIcon = '../map-test/icons/markerV.png',
-                midIcon = '../map-test/icons/markerN.png',
-                dangerIcon ='../map-test/icons/markerR.png';
+            var normalIcon = '../map-test/icons/markerV.svg',
+                midIcon = '../map-test/icons/markerN.svg',
+                dangerIcon ='../map-test/icons/markerR.svg';
             seisms.forEach(function(seism, index, arr) {
                 seism.localDateTime = new Date($.now());
                 var icon = normalIcon;
@@ -200,11 +200,15 @@ window.addEventListener('load', function () {
                 if(seism.magnitude >= 5) {
                     icon = dangerIcon;
                 }
-                var marker = new google.maps.Marker({
+                var marker = new SVGMarker({
                     map: map,
                     position: new google.maps.LatLng(seism.lat, seism.lon),
                     title: seism.local,
-                    icon: icon,
+                    icon: {
+                         anchor: new google.maps.Point(8.5, 51),
+                         size: new google.maps.Size(17, 51),
+                         url: icon
+                     }
                 });         
             });
         };

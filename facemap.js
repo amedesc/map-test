@@ -10,15 +10,15 @@ CustomMarker.prototype.draw = function() {
     var div = this.div;
     if (!div) {
         div = this.div = $('' +
-            '<div class="pulse-container">' +
-                '<div class="pulse-box">' +
-                    '<svg class="pulse-svg">' +
-                        '<circle class="circle first-circle" fill="#FF6347" cx="10" cy="10" r="10"></circle>' +
-                        '<circle class="circle second-circle" fill="#FF6347" cx="10" cy="10" r="10"></circle>' +
-                        '<circle class="circle third-circle" fill="#FF6347" cx="10" cy="10" r="10"></circle>' +
-                        '<circle class="circle" fill="#FF6347" cx="10" cy="10" r="10"></circle>' +
-                    '</svg>' +
-                '</div>' +
+            '<div>' +
+            // '<div class="pulse-box">' +
+            '<svg class="pulse-svg">' +
+            '<circle class="circle first-circle" fill="#FF0000" cx="10" cy="10" r="10"></circle>' +
+            '<circle class="circle second-circle" fill="#FF0000" cx="10" cy="10" r="10"></circle>' +
+            '<circle class="circle third-circle" fill="#FF0000" cx="10" cy="10" r="10"></circle>' +
+            '<circle class="circle" fill="#FF0000" cx="10" cy="10" r="10"></circle>' +
+            '</svg>' +
+            // '</div>' +
             '</div>' +
             '')[0];
         this.circle = this.div.getElementsByClassName('circle');
@@ -346,11 +346,11 @@ window.addEventListener('load', function () {
         ]
     });
     var marker2 = new CustomMarker({
-        position: new google.maps.LatLng(10, -84),
+        position: new google.maps.LatLng(9.839190796211385, -83.98526430130005),
         map: map,
         icon : {
-            anchor: new google.maps.Point(0, 51),
-            size: new google.maps.Size(10, 10),
+            anchor: new google.maps.Point(10, 10),
+            size: new google.maps.Size(20, 20),
         }
     });
     var allSeisms = [],
@@ -358,16 +358,16 @@ window.addEventListener('load', function () {
             'getWebMapSeisms' +
             '?access_token=559aca63553be4973f58dbc1',
         addMarkers = function(seisms) {
-            var icon1 = '../map-test/icons/1.png',
-                icon2 = '../map-test/icons/2.png',
-                icon3 = '../map-test/icons/3.png',
-                icon4 = '../map-test/icons/4.png',
-                icon5 = '../map-test/icons/5.png',
-                icon6 = '../map-test/icons/6.png',
-                icon7 = '../map-test/icons/7.png',
-                icon8 = '../map-test/icons/8.png',
-                icon9 = '../map-test/icons/9.png',
-                icon10 = '../map-test/icons/10.png';
+            var icon1 = '../map-test/icons/1.svg',
+                icon2 = '../map-test/icons/2.svg',
+                icon3 = '../map-test/icons/3.svg',
+                icon4 = '../map-test/icons/4.svg',
+                icon5 = '../map-test/icons/5.svg',
+                icon6 = '../map-test/icons/6.svg',
+                icon7 = '../map-test/icons/7.svg',
+                icon8 = '../map-test/icons/8.svg',
+                icon9 = '../map-test/icons/9.svg',
+                icon10 = '../map-test/icons/10.svg';
             seisms.forEach(function(seism, index, arr) {
                 var icon = icon1;
                 switch(seism.properties.intensity) {
@@ -402,11 +402,16 @@ window.addEventListener('load', function () {
                         icon = icon10;
                         break;
                 }
-                var marker = new google.maps.Marker({
+                var marker = new SVGMarker({
                     map: map,
                     position: new google.maps.LatLng(seism.geometry.coordinates[1], seism.geometry.coordinates[0]),
-                    icon: icon,
-                });         
+                    title: seism.local,
+                    icon: {
+                         anchor: new google.maps.Point(12.5, 35),
+                         size: new google.maps.Size(25, 35),
+                         url: icon
+                     }
+                });           
             });
         };
     function getSeisms(){
