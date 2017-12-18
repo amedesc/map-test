@@ -191,6 +191,11 @@ window.addEventListener('load', function () {
             }
           ]
     });
+
+$('.button-collapse').sideNav({
+    menuWidth: 280
+});
+    
     var allSeisms = [],
         url = 'http://rsnapiusr.ucr.ac.cr/api/seisms/' +
             'getWebMapSeisms' +
