@@ -1,3 +1,40 @@
+CustomMarker.prototype = new google.maps.OverlayView();
+
+function CustomMarker(opts) {
+    this.setValues(opts);
+}
+
+CustomMarker.prototype.draw = function() {
+    var self = this;
+    var div = this.div;
+    if (!div) {
+        div = this.div = $('' +
+            '<div>' +
+   //         '<div class="shadow"></div>' +
+            '<div class="pulse"></div>' +
+   //         '<div class="pin-wrap">' +
+   //         '<div class="pin"></div>' +
+            '</div>' +
+            '</div>' +
+            '')[0];
+   //     this.pinWrap = this.div.getElementsByClassName('pin-wrap');
+   //     this.pin = this.div.getElementsByClassName('pin');
+        this.pinShadow = this.div.getElementsByClassName('shadow');
+        div.style.position = 'absolute';
+        div.style.cursor = 'pointer';
+        var panes = this.getPanes();
+        panes.overlayImage.appendChild(div);
+        google.maps.event.addDomListener(div, "click", function(event) {
+            google.maps.event.trigger(self, "click", event);
+        });
+    }
+    var point = this.getProjection().fromLatLngToDivPixel(this.position);
+    if (point) {
+        div.style.left = point.x + 'px';
+        div.style.top = point.y + 'px';
+    }
+};
+
 // Main function
 window.addEventListener('load', function () {
     var map = new google.maps.Map(document.getElementById('map'), {
@@ -180,7 +217,13 @@ window.addEventListener('load', function () {
                          size: new google.maps.Size(17, 51),
                          url: icon
                      }
-                });         
+                });
+                if (index===1){
+                  var markerPulse = new CustomMarker({
+                      position: new google.maps.LatLng(seism.lat, seism.lon),
+                      map: map,
+                  });   
+              }              
             });
         };
     function getSeisms(){
