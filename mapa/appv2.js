@@ -1,3 +1,4 @@
+var width = $(window).width();
 CustomMarker.prototype = new google.maps.OverlayView();
 
 function CustomMarker(opts) {
@@ -53,6 +54,9 @@ google.maps.event.addDomListener(window, 'load', function() {
         zoom: 8,
         center: new google.maps.LatLng(9.4, -84),
         optimized: false,
+        zoomControlOptions: {
+              position: google.maps.ControlPosition.LEFT_TOP
+          },
         styles: [{
             'featureType': 'administrative.country',
             'elementType': 'geometry.stroke',
