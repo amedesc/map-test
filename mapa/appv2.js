@@ -14,6 +14,7 @@ CustomMarker.prototype.draw = function() {
             '<div>' +
    //         '<div class="shadow"></div>' +
             '<div class="pulse"></div>' +
+            '<div class="pul"></div>' +
    //         '<div class="pin-wrap">' +
    //         '<div class="pin"></div>' +
             '</div>' +
@@ -285,6 +286,22 @@ google.maps.event.addDomListener(window, 'load', function() {
                     }
                 })(marker));
                 markers.push(marker);
+
+                if (index === 0 ) {
+                var div = map.getDiv();
+                map.panTo(new google.maps.LatLng(seism.lat , seism.lon));
+                if (width <= 640) {
+                    map.setZoom(10);
+                    map.panBy(div.offsetWidth/45, div.offsetHeight/45);
+                }else if (width >= 1280) {
+                    map.setZoom(8);
+                    map.panBy(div.offsetWidth/10, div.offsetHeight/10);
+                }else {
+                    map.setZoom(9);
+                    map.panBy(div.offsetWidth/8, div.offsetHeight/8);
+                }
+
+            }
             });
         };
 
