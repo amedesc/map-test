@@ -280,7 +280,7 @@ google.maps.event.addDomListener(window, 'load', function() {
                     return function() {
                         infowindow.setContent(content);
                         infowindow.setOptions({
-                            maxWidth: 200
+                            maxWidth: 300
                         });
                         infowindow.open(map, marker);
                     }
