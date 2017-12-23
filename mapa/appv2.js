@@ -287,7 +287,7 @@ google.maps.event.addDomListener(window, 'load', function() {
                 })(marker));
                 markers.push(marker);
 
-                if (index === 0 ) {
+                   if (index === 0 ) {
                 var div = map.getDiv();
                 map.panTo(new google.maps.LatLng(seism.lat , seism.lon));
                 if (width <= 640) {
@@ -301,9 +301,16 @@ google.maps.event.addDomListener(window, 'load', function() {
                     map.panBy(div.offsetWidth/8, div.offsetHeight/8);
                 }
 
-            }
+            }   
             });
+            locate(0);
         };
+
+
+     function locate(marker_id) {
+        var myMarker = markers[marker_id];
+        google.maps.event.trigger(myMarker, 'click');
+    }   
 
     function clearOverlays() {
     	for (var i = 0; i < markers.length; i++ ) {
