@@ -131,16 +131,7 @@ header .container {
   margin-bottom: 5px;
   line-height: 0.8em;
 }
-#nav-mobile h3.inline {
-  display: block;
-  float: left;
-  margin-top: 5px;
-}
-#nav-mobile h3.inline + p {
-  display: block;
-  float: right;
-  margin-right: 50px;
-}
+
 #nav-mobile p.data {
   margin: 0;
   text-align: left;
@@ -152,9 +143,7 @@ header .container {
   padding-bottom: 10px;
   display: block;
 }
-.seism-coordinates-wrapper {
-  overflow: hidden;
-}
+
 .side-nav li {
   padding: 0;
 }

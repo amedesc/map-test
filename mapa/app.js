@@ -1,3 +1,4 @@
+var currentFilter = 1;
 var width = $(window).width();
 CustomMarker.prototype = new google.maps.OverlayView();
 
@@ -10,26 +11,15 @@ CustomMarker.prototype.draw = function() {
     var self = this;
     var div = this.div;
     if (!div) {
-        div = this.div = $('' +
-            '<div>' +
-   //         '<div class="shadow"></div>' +
-            '<div class="pulse"></div>' +
-            '<div class="pul"></div>' +
-   //         '<div class="pin-wrap">' +
-   //         '<div class="pin"></div>' +
-            '</div>' +
-            '</div>' +
-            '')[0];
-   //     this.pinWrap = this.div.getElementsByClassName('pin-wrap');
-   //     this.pin = this.div.getElementsByClassName('pin');
+        div = this.div = $('' + '<div>' +
+            '<div class="pulse-first"></div>' +
+            '<div class="pulse-second"></div>' +
+            '</div>' + '')[0];
         this.pinShadow = this.div.getElementsByClassName('shadow');
         div.style.position = 'absolute';
         div.style.cursor = 'pointer';
         var panes = this.getPanes();
         panes.overlayImage.appendChild(div);
-        google.maps.event.addDomListener(div, "click", function(event) {
-            google.maps.event.trigger(self, "click", event);
-        });
     }
     var point = this.getProjection().fromLatLngToDivPixel(this.position);
     if (point) {
@@ -174,21 +164,9 @@ google.maps.event.addDomListener(window, 'load', function() {
 
         $('.active').removeClass('active');
 
-        if (usingFilters) {
-            var values = {};
-            $.each($('#filter_form').serializeArray(), function(i, field) {
-                values[field.name] = field.value;
-            });
+         
             if ($this.hasClass('week-filter')) {
-                currentFilter = 1;
-                userFilters(values);
-            } else {
-                currentFilter = 2;
-                userFilters(values);
-            }
-        } else {
-            if ($this.hasClass('week-filter')) {
-                addMarkers(allSeisms);
+                add24();
                 currentFilter = 1;
             } else {
                 currentFilter = 2;
@@ -196,12 +174,12 @@ google.maps.event.addDomListener(window, 'load', function() {
                     .utcOffset('-06:00')
                     .add(-24, 'hours')
                     .unix();
-                addMarkers(allSeisms.filter(function(seism, index, arr) {
+                remove24(allSeisms.filter(function(seism, index, arr) {
                     return moment(seism['origin_time'].replace('Z', '+06:00'))
-                        .unix() >= twentyFourHoursAgo;
+                        .unix() < twentyFourHoursAgo;
                 }));
             }
-        }
+        
 
         $this.addClass('active');
     });
@@ -286,31 +264,46 @@ google.maps.event.addDomListener(window, 'load', function() {
                     }
                 })(marker));
                 markers.push(marker);
-
-                   if (index === 0 ) {
-                var div = map.getDiv();
-                map.panTo(new google.maps.LatLng(seism.lat , seism.lon));
-                if (width <= 640) {
-                    map.setZoom(10);
-                    map.panBy(div.offsetWidth/45, div.offsetHeight/45);
-                }else if (width >= 1280) {
-                    map.setZoom(8);
-                    map.panBy(div.offsetWidth/10, div.offsetHeight/10);
-                }else {
-                    map.setZoom(9);
-                    map.panBy(div.offsetWidth/8, div.offsetHeight/8);
-                }
-
-            }   
+   
             });
             locate(0);
+            google.maps.event.trigger(markers[0], 'click');
         };
 
 
      function locate(marker_id) {
         var myMarker = markers[marker_id];
-        google.maps.event.trigger(myMarker, 'click');
-    }   
+        var div = map.getDiv();
+        map.panTo(new google.maps.LatLng(myMarker.position.lat() , myMarker.position.lng()));
+        if (width <= 640) {
+            map.setZoom(9);
+        }
+        else if (width >= 1280) {
+            map.setZoom(8);
+        }
+        else {
+            map.setZoom(9);
+        } 
+    }
+
+
+
+    function add24(){
+    	for (var i = 0; i < markers.length; i++ ) {
+    		if (markers[i].map==null){
+    			markers[i].setMap(map);
+    		}
+    	}
+    	locate(0);
+    }
+
+    function remove24(seisms){
+        var i = markers.length - seisms.length;
+        for (i; i < markers.length; i++ ) {
+            markers[i].setMap(null);
+        }
+        locate(0);
+    }
 
     function clearOverlays() {
     	for (var i = 0; i < markers.length; i++ ) {

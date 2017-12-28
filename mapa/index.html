@@ -3,16 +3,15 @@
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
     <script type="text/javascript" src=https://s3-us-west-2.amazonaws.com/s.cdpn.io/134893/SVGMarker.js></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
-    <script src="appv2.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.0/moment.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.14/moment-timezone.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.14/moment-timezone-with-data.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
+    <script src="app.js"></script>
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" type="text/css" href="app.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
     <link rel="stylesheet" href="css.css" type="text/css">
-    <script src="materialize.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.0/moment.js"</script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.14/moment-timezone.js"</script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.14/moment-timezone-with-data.js"></script>
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
 </head>
 <body>
 	<header>
@@ -27,14 +26,10 @@
                <p class="data" data-latest-seism="magnitude"></p>
                <h3>Profundidad</h3>
                <p class="data" data-latest-seism="depth"></p>
-               <div class="seism-coordinates-wrapper">
-                  <h3 class="inline">Latitud</h3>
-                  <p class="data" data-latest-seism="lat"></p>
-               </div>
-               <div class="seism-coordinates-wrapper">
-                  <h3 class="inline">Longitud</h3>
-                  <p class="data" data-latest-seism="lon"></p>
-               </div>
+               <h3>Latitud</h3>
+               <p class="data" data-latest-seism="lat"></p>
+               <h3>Longitud</h3>
+               <p class="data" data-latest-seism="lon"></p>
                <h3>Localizaci&oacute;n</h3>
                <p class="data" data-latest-seism="local"></p>
                <div class="map-meta">
