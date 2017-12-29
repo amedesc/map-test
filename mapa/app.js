@@ -195,6 +195,12 @@ google.maps.event.addDomListener(window, 'load', function() {
                 dangerIcon = '../mapa/icons/pin_rojo.svg',
                 infowindow = new google.maps.InfoWindow();
             seisms.forEach(function(seism, index, arr) {
+            	 if (index===0){
+                      var markerPulse = new CustomMarker({
+                      position: new google.maps.LatLng(seism.lat, seism.lon),
+                      map: map,
+                  });   
+              }
                 var time = moment.tz(seism['origin_time'].toString().replace('Z', '+06:00'), "America/Costa_Rica").format('DD-MM-YYYY h:mm a')
                 seism.localDateTime = time;
                 if(index === 0) {
@@ -227,15 +233,10 @@ google.maps.event.addDomListener(window, 'load', function() {
                     map: map,
                     position: new google.maps.LatLng(seism.lat, seism.lon),
                     title: seism.local,
-                    icon: SVGMarker
+                    icon: icon
                 });
 
-                if (index===0){
-                      var markerPulse = new CustomMarker({
-                      position: new google.maps.LatLng(seism.lat, seism.lon),
-                      map: map,
-                  });   
-              }
+               
                 var content = [
                     '<b class="fecha_hora_infoWindow">Fecha y Hora Local: </b> <span class="fecha_hora_infoWindow">' + seism.localDateTime + '</span>',
                     '<b class="fecha_hora_infoWindow">Magnitud: </b> <span class="fecha_hora_infoWindow">' + seism.magnitude + ' Mw' + '</span>',

@@ -1,14 +1,14 @@
 
 .pulse-first {
 	position: absolute;
-	margin-top: -30px;
-	margin-left: -27px;
+	margin-top: -25px;
+	margin-left: -25px;
 }
 
 .pulse-second {
 	position: absolute;
-	margin-top: -30px;
-	margin-left: -27px;
+	margin-top: -25px;
+	margin-left: -25px;
 }
 
 .pulse-first::after {
