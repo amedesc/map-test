@@ -1,11 +1,22 @@
-var currentFilter = 1;
 var width = $(window).width();
+var map;
+var markers = [];
+var allSeisms = [],
+url = 'http://rsnapiusr.ucr.ac.cr/api/seisms/' + 'getWebMapSeisms' + '?access_token=559aca63553be4973f58dbc1';
+var normalIcon = '../mapa/icons/pin_verde.svg',
+                midIcon = '../mapa/icons/pin_naranja.svg',
+                dangerIcon = '../mapa/icons/pin_rojo.svg',
+                infowindow = new google.maps.InfoWindow();
+
 CustomMarker.prototype = new google.maps.OverlayView();
 
+/*
+	Definición del custommarker y sus funciones para agregarlo en el mapa y removerlo
+	El marcadaor consiste de 2 animaciones css pulse úbicado en el sismo más reciente
+*/
 function CustomMarker(opts) {
     this.setValues(opts);
 }
-
 
 CustomMarker.prototype.draw = function() {
     var self = this;
@@ -36,12 +47,11 @@ CustomMarker.prototype.remove = function() {
   };
 
 
-
-
-// Main function
-google.maps.event.addDomListener(window, 'load', function() {
-    var markers = [];
-    var map = new google.maps.Map(document.getElementById('map'), {
+/*
+	Función que crea el mapa
+*/
+function initMap(){
+	map = new google.maps.Map(document.getElementById('map'), {
         zoom: 8,
         center: new google.maps.LatLng(9.4, -84),
         optimized: false,
@@ -148,74 +158,59 @@ google.maps.event.addDomListener(window, 'load', function() {
             }]
         }]
     });
-
-    $('.button-collapse').sideNav({
-        menuWidth: 280
-    });
-
-    var usingFilters = false;
+}
 
 
+// Main function
+google.maps.event.addDomListener(window, 'load', function() {
+	initMap();
 
+	//permite que la barra del menú de dispositivos móviles se abrá al darle click
+    $('.button-collapse').sideNav({ menuWidth: 280 });
+
+    //permite que se ejecuten los filtros de 15 días y 24 horas
     $('.filter').click(function(eventObject) {
         var $this = $(this);
-
         if ($this.hasClass('active')) return;
-
         $('.active').removeClass('active');
-
-         
-            if ($this.hasClass('week-filter')) {
-                add24();
-                currentFilter = 1;
-            } else {
-                currentFilter = 2;
-                var twentyFourHoursAgo = moment()
-                    .utcOffset('-06:00')
-                    .add(-24, 'hours')
-                    .unix();
-                remove24(allSeisms.filter(function(seism, index, arr) {
-                    return moment(seism['origin_time'].replace('Z', '+06:00'))
-                        .unix() < twentyFourHoursAgo;
-                }));
-            }
-        
-
+        if ($this.hasClass('week-filter')) {
+        	add24();
+        	currentFilter = 1;
+        } 
+        else {
+        	currentFilter = 2;
+        	var twentyFourHoursAgo = moment()
+        							.utcOffset('-06:00')
+        							.add(-24, 'hours')
+        							.unix();
+            remove24(allSeisms.filter(function(seism, index, arr) {
+            	return moment(seism['origin_time'].replace('Z', '+06:00'))
+            	.unix() < twentyFourHoursAgo;
+            }));
+        }
         $this.addClass('active');
     });
 
-    var allSeisms = [],
-        url = 'http://rsnapiusr.ucr.ac.cr/api/seisms/' +
-        'getWebMapSeisms' +
-        '?access_token=559aca63553be4973f58dbc1',
-        addMarkers = function(seisms) {
-            clearOverlays();
-            var normalIcon = '../mapa/icons/pin_verde.svg',
-                midIcon = '../mapa/icons/pin_naranja.svg',
-                dangerIcon = '../mapa/icons/pin_rojo.svg',
-                infowindow = new google.maps.InfoWindow();
-            seisms.forEach(function(seism, index, arr) {
-            	 if (index===0){
-                      var markerPulse = new CustomMarker({
-                      position: new google.maps.LatLng(seism.lat, seism.lon),
-                      map: map,
-                  });   
-              }
-                var time = moment.tz(seism['origin_time'].toString().replace('Z', '+06:00'), "America/Costa_Rica").format('DD-MM-YYYY h:mm a')
-                seism.localDateTime = time;
-                if(index === 0) {
-                $('[data-latest-seism="localDateTime"]')
-                    .text(seism.localDateTime);
-                $('[data-latest-seism="magnitude"]')
-                    .text(seism.magnitude + ' Mw');
-                $('[data-latest-seism="depth"]')
-                    .text(seism.depth + ' km');
-                $('[data-latest-seism="lat"]')
-                    .text(Math.abs(seism.lat) + (seism.lat < 0?' S': ' N'));
-                $('[data-latest-seism="lon"]')
-                    .text(Math.abs(seism.lon) + (seism.lat < 0?' E': ' O'));
-                $('[data-latest-seism="local"]')
-                    .text(seism.local);
+
+    function addData (date, magnitude, depth, lat, lon, local){
+    	$('[data-latest-seism="localDateTime"]') .text(date);
+        $('[data-latest-seism="magnitude"]').text(magnitude + ' Mw');
+        $('[data-latest-seism="depth"]').text(depth + ' km');
+        $('[data-latest-seism="lat"]').text(Math.abs(lat) + (lat < 0?' S': ' N'));
+        $('[data-latest-seism="lon"]').text(Math.abs(lon) + (lat < 0?' E': ' O'));
+        $('[data-latest-seism="local"]').text(local);
+    }
+       
+    function addMarkers(seisms) {
+    	seisms.forEach(function(seism, index, arr) {
+    		var time = moment.tz(seism['origin_time'].toString().replace('Z', '+06:00'), "America/Costa_Rica").format('DD-MM-YYYY h:mm a')
+    				   seism.localDateTime = time;
+    		if(index === 0) {
+    			addData(seism.localDateTime, seism.magnitude, seism.depth, seism.lat, seism.lon, seism.local);
+                var markerPulse = new CustomMarker({
+    				position: new google.maps.LatLng(seism.lat, seism.lon),
+    				map: map
+    			});   
             }
                 var icon = normalIcon;
                 if (seism.magnitude > 3.5) {
@@ -224,19 +219,25 @@ google.maps.event.addDomListener(window, 'load', function() {
                 if (seism.magnitude >= 5) {
                     icon = dangerIcon;
                 }
-                var SVGMarker = {
-                    url: icon,
-                    anchor: new google.maps.Point(8.5, 51),
-                    size: new google.maps.Size(17, 51)
-                };
+                if (index ===0){
                 var marker = new google.maps.Marker({
                     map: map,
                     position: new google.maps.LatLng(seism.lat, seism.lon),
                     title: seism.local,
-                    icon: icon
+                    icon: icon,
+                   	zIndex: google.maps.Marker.MAX_ZINDEX + 1
                 });
 
-               
+               }
+               else{
+               	var marker = new google.maps.Marker({
+                    map: map,
+                    position: new google.maps.LatLng(seism.lat, seism.lon),
+                    title: seism.local,
+                    icon: icon
+                   	
+                });
+               }
                 var content = [
                     '<b class="fecha_hora_infoWindow">Fecha y Hora Local: </b> <span class="fecha_hora_infoWindow">' + seism.localDateTime + '</span>',
                     '<b class="fecha_hora_infoWindow">Magnitud: </b> <span class="fecha_hora_infoWindow">' + seism.magnitude + ' Mw' + '</span>',
@@ -304,14 +305,6 @@ google.maps.event.addDomListener(window, 'load', function() {
             markers[i].setMap(null);
         }
         locate(0);
-    }
-
-    function clearOverlays() {
-    	for (var i = 0; i < markers.length; i++ ) {
-    		markers[i].setMap(null);
-    	}
-    	markers.length = 0;
-        CustomMarker.prototype.setMap(null);
     }
 
     function getSeisms() {
