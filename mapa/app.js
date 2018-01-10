@@ -193,9 +193,10 @@ google.maps.event.addDomListener(window, 'load', function() {
 
 
     function addData (date, magnitude, depth, lat, lon, local){
-        var latestSeism = moment(date)
-    	$('[data-latest-seism="localDate"]').text(latestSeism.format("DD-MM-YYYY"));
-        $('[data-latest-seism="localTime"]').text(latestSeism.format("HH:mm"));
+        var latestdate = moment(date, 'DD-MM-YYYY').format('DD-MM-YYYY');
+        var latesttime = moment(date, 'HH:mm').format('HH:mm');
+    	$('[data-latest-seism="localDate"]').text(latestdate);
+        $('[data-latest-seism="localTime"]').text(latesttime);
         $('[data-latest-seism="magnitude"]').text(magnitude + ' Mw');
         $('[data-latest-seism="depth"]').text(depth + ' km');
         $('[data-latest-seism="lat"]').text(Math.abs(lat) + (lat < 0?' S': ' N'));
