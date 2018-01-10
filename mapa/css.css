@@ -229,7 +229,8 @@ button.filter.active {
 }
 
 header .container {
-  padding-left: 2.75rem;
+  padding-left: 1rem;
+
 }
 
 #nav-mobile .map-meta h2 {
@@ -238,6 +239,7 @@ header .container {
 
 #nav-mobile .map-meta p {
   margin:auto;
+  width: 80%;
 }
 
 #nav-mobile .map-meta ul li {
@@ -248,5 +250,6 @@ header .container {
 #nav-mobile h2 {
   width: 18.5rem;
   height: 2.45rem;
+  margin-left: 0px;
 }
 }
