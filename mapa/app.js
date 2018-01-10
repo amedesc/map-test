@@ -166,7 +166,7 @@ google.maps.event.addDomListener(window, 'load', function() {
 	initMap();
 
 	//permite que la barra del menú de dispositivos móviles se abrá al darle click
-    $('.button-collapse').sideNav({ menuWidth: 280 });
+    $('.button-collapse').sideNav({ menuWidth: 421 });
 
     //permite que se ejecuten los filtros de 15 días y 24 horas
     $('.filter').click(function(eventObject) {
@@ -193,7 +193,9 @@ google.maps.event.addDomListener(window, 'load', function() {
 
 
     function addData (date, magnitude, depth, lat, lon, local){
-    	$('[data-latest-seism="localDateTime"]') .text(date);
+        var latestSeism = moment(date)
+    	$('[data-latest-seism="localDate"]').text(latestSeism.format("DD-MM-YYYY"));
+        $('[data-latest-seism="localTime"]').text(latestSeism.format("HH:mm"));
         $('[data-latest-seism="magnitude"]').text(magnitude + ' Mw');
         $('[data-latest-seism="depth"]').text(depth + ' km');
         $('[data-latest-seism="lat"]').text(Math.abs(lat) + (lat < 0?' S': ' N'));
