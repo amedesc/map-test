@@ -90,7 +90,6 @@ header .container {
   font-family: Roboto;
   color: #546E7A;
   margin: 0px 6.0625rem 2.5rem 3.375rem;
-  width: 208px;
 }
 
 
@@ -123,7 +122,7 @@ header .container {
 
 #nav-mobile .map-meta ul li.mid{
   margin-right: 0px;
-  width: 208px;
+  padding-right: 0px;
 }
 #nav-mobile .map-meta ul li.danger span {
   background-color: #f00;
