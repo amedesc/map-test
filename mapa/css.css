@@ -218,18 +218,18 @@ button.filter.active {
     bottom: 170px;
   }
 }
-@media only screen and (max-width: 320px) {
-  .fecha_hora_infoWindow {
-    font-size: 9px;
-  }
-}
+
 
 @media only screen and (max-width: 340px) {
   #nav-mobile h2 {
     width: 18rem;
     height: 2.45rem;
     margin-left: 0px;
-  }  
+  }
+  
+  .fecha_hora_infoWindow {
+    font-size: 9px;
+  }
 }
 
 
