@@ -284,4 +284,9 @@ header .container {
 #eso {
   margin: 0px;
 }
+button.filter {
+  bottom: 140px;
+}
+
+
 }
