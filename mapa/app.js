@@ -282,6 +282,7 @@ google.maps.event.addDomListener(window, 'load', function() {
         map.panTo(new google.maps.LatLng(myMarker.position.lat() , myMarker.position.lng()));
         if (width <= 640) {
             map.setZoom(9);
+            map.panBy(div.offsetWidth/45, div.offsetHeight/45);
         }
         else if (width >= 1280) {
             map.setZoom(8);
