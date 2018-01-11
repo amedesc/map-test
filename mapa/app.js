@@ -283,13 +283,13 @@ google.maps.event.addDomListener(window, 'load', function() {
         if (width <= 640) {
             map.setZoom(9);
             map.panBy(div.offsetWidth/45, div.offsetHeight/45);
-        }
-        else if (width >= 1280) {
+        }else if (width >= 1280) {
             map.setZoom(8);
-        }
-        else {
+            map.panBy(div.offsetWidth/10, div.offsetHeight/10);
+        }else {
             map.setZoom(9);
-        } 
+            map.panBy(div.offsetWidth/8, div.offsetHeight/8);
+        }
     }
 
 
