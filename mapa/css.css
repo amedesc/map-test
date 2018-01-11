@@ -5,21 +5,18 @@ html, body{
 }
 
 header {
-  width: 421px;
-  height: 100%;
   float: left;
 }
 
 section{
   height: 100%;
+  margin-left: 421px;
   overflow: hidden;
 }
 
 main {
   width: 100%;
   height: 100%;
-  position: fixed;
-  box-sizing: content-box;
 }
 header .container:first-child {
   background: url('rsn-logo.png') no-repeat center;
@@ -48,6 +45,7 @@ header .container {
 #nav-mobile {
   width: 421px !important;
   height: 100% !important;
+  padding: 0%;
 }
 
 #nav-mobile .rsn-logo {
@@ -62,6 +60,7 @@ header .container {
   background-color: #FAFAFA;
   width: 100%;
   margin-top: 60px;
+  padding-bottom: 20px
 }
 #nav-mobile .map-meta h2 {
   height: 1.3125rem;
@@ -226,8 +225,32 @@ button.filter.active {
   }
 }
 
+@media only screen and (max-width: 340px) {
+  #nav-mobile h2 {
+    width: 18rem;
+    height: 2.45rem;
+    margin-left: 0px;
+  }  
+}
+
 
 @media only screen and (max-width: 420px) {
+  html, body{
+    width: 100%;
+    height: 100%;
+  }
+  header{
+    padding: 0px;
+    float: none;
+  }
+
+  section{
+    width: 100%;
+    margin: 0px;
+    position: absolute;
+    height: calc(100% - 50.4px);
+  }
+
   #nav-mobile {
   width: 80% !important;
   height: 100% !important;
@@ -254,8 +277,12 @@ header .container {
 }
 
 #nav-mobile h2 {
-  width: 18.5rem;
+  width: 18rem;
   height: 2.45rem;
-  margin-left: 0px;
+  margin-right: 0px;
+}
+
+#eso {
+  margin: 0px;
 }
 }
