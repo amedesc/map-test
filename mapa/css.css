@@ -10,7 +10,7 @@ header {
 
 section{
   height: 100%;
-  margin-left: 421px;
+  margin-left: 400px;
   overflow: hidden;
 }
 
@@ -19,7 +19,7 @@ main {
   height: 100%;
 }
 header .container:first-child {
-  background: url('rsn-logo.png') no-repeat center;
+  background: url('logo-rsn.svg') no-repeat center;
   background-size: contain;
   padding-left: 0;
   width: 100%;
@@ -28,7 +28,7 @@ header .container:first-child a {
   box-sizing: border-box;
   padding: 0 10px;
   font-size: 2em;
-  color: #007bc2;
+  color: #0087e0;
   display: inline-block;
   border-radius: 0;
   margin-left: 0;
@@ -43,18 +43,16 @@ header .container {
   height: 100%;
 }
 #nav-mobile {
-  width: 421px !important;
+  width: 400px !important;
   height: 100% !important;
   padding: 0%;
-}
+} 
 
 #nav-mobile .rsn-logo {
-  background-image: url('./rsn-logo.png');
-  background-position: top center;
-  background-repeat: no-repeat;
   width: 84px;
   height: 125px;
-  margin: 20px auto 0;
+  margin: 20px auto 0 auto;
+  display: block;
 }
 #nav-mobile .map-meta{
   background-color: #FAFAFA;
@@ -117,7 +115,7 @@ header .container {
 }
 
 #nav-mobile .map-meta ul li.mid span {
-  background-color: #ff9c03;
+  background-color: #ff7300;
 }
 
 #nav-mobile .map-meta ul li.mid{
@@ -125,7 +123,7 @@ header .container {
   padding-right: 0px;
 }
 #nav-mobile .map-meta ul li.danger span {
-  background-color: #f00;
+  background-color: #ff0000;
 }
 #nav-mobile .map-meta ul li:hover {
   background: none;
