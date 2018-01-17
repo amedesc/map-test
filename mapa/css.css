@@ -129,6 +129,7 @@ header .container {
   background: none;
 }
 #nav-mobile h2 {
+  display: block;
   width: 23.125rem;
   height: 3.0625rem;
   font-family: 'Open Sans', sans-serif;
@@ -136,7 +137,7 @@ header .container {
   font-weight: bold;
   line-height: 47px;
   text-align: center;
-  margin: 2.1875rem 1.5625rem 2.1875rem 1.625rem; 
+  margin: 2.1875rem auto 2.1875rem auto; 
 }
 
 #col2{
@@ -228,7 +229,7 @@ button.filter.active {
   #nav-mobile h2 {
     width: 18rem;
     height: 2.45rem;
-    margin-left: 0px;
+    
   }
   
   .fecha_hora_infoWindow {
@@ -272,7 +273,6 @@ header .container {
 #nav-mobile h2 {
   width: 18rem;
   height: 2.45rem;
-  margin-right: 0px;
 }
 
 #eso {

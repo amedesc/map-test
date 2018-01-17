@@ -54,7 +54,7 @@ function initMap(){
 	map = new google.maps.Map(document.getElementById('map'), {
         zoom: 8,
         center: new google.maps.LatLng(9.4, -84),
-        optimized: false,
+        streetViewControl: false,
         zoomControlOptions: {
               position: google.maps.ControlPosition.LEFT_TOP
           },
