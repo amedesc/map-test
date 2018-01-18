@@ -27,15 +27,16 @@ header .container:first-child {
 header .container:first-child a {
   box-sizing: border-box;
   padding: 0 10px;
-  font-size: 2em;
+  font-size: 32px;
   color: #0087e0;
   display: inline-block;
   border-radius: 0;
   margin-left: 0;
 }
 header .container {
-  width: 100%;
-  padding-left: 3.23rem;
+  display: block;
+  margin: auto;
+  width: 80%;
   margin-top: 0px;
 }
 #map {
@@ -87,7 +88,7 @@ header .container {
   font-size: 1.2375rem ;
   font-family: 'Open Sans', sans-serif;
   color: #546E7A;
-  margin: 0px 6.0625rem 2.5rem 3.375rem;
+  margin: 0px 6.0625rem 2.5rem 2.75rem;
 }
 
 
@@ -151,6 +152,7 @@ header .container {
 }
 
 
+
 #nav-mobile h3 {
   color: #546E7A;
   font-size: 0.9375rem;
@@ -173,26 +175,26 @@ header .container {
 }
 button.filter {
   box-sizing: border-box;
-  left: 30px;
-  bottom: 140px;
+  left: 1.875rem;
+  bottom: 8.75rem;
   position: relative;
-  margin-bottom: 10px;
+  margin-bottom: 0.625rem;
   display: block;
-  border-radius: 15px;
-  border: 2px solid #007bc2;
+  border-radius: 0.9375rem;
+  border: 0.125rem solid #007bc2;
   background: rgba(255, 255, 255, .7);
-  padding: 10px;
+  padding: 0.625rem;
   color: #007bc2;
   font-weight: 600;
 }
 button.filter.active {
   border: 0;
-  padding: 12px;
+  padding: 0.75rem;
   background: #007bc2;
   color: #fff;
 }
 .filter_button {
-  width: 100px;
+  width: 6.25rem;
   color: #fff;
   box-shadow: none;
   border: none;
@@ -220,20 +222,24 @@ button.filter.active {
     margin: 0px;
   }
   button.filter {
-    bottom: 140px;
+    bottom: 8.75rem;
   }
 }
 
 
 @media only screen and (max-width: 340px) {
-  #nav-mobile h2 {
-    width: 18rem;
-    height: 2.45rem;
-    
+  html, body{
+    font-size: 10px;
   }
+
   
   .fecha_hora_infoWindow {
     font-size: 9px;
+  }
+
+  #col1{
+    display: inline-block;
+    width: 9rem;
   }
 }
 
@@ -250,11 +256,6 @@ button.filter.active {
   height: 100% !important;
 }
 
-header .container {
-  padding-left: 1rem;
-
-}
-
 #nav-mobile .map-meta h2 {
   margin-left: 2rem;
 }
@@ -266,7 +267,7 @@ header .container {
 }
 
 #nav-mobile .map-meta ul li {
-  margin-left: 2rem;
+  margin-left: 1rem;
   margin-right: 0px;
 }
 
@@ -279,6 +280,6 @@ header .container {
   margin: 0px;
 }
 button.filter {
-  bottom: 140px;
+  bottom: 8.75rem;
 }
 }

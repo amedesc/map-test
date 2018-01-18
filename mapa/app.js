@@ -56,7 +56,7 @@ function initMap(){
         center: new google.maps.LatLng(9.4, -84),
         streetViewControl: false,
         zoomControlOptions: {
-              position: google.maps.ControlPosition.LEFT_TOP
+              position: google.maps.ControlPosition.TOP_LEFT
           },
         styles: [{
             'featureType': 'administrative.country',
