@@ -65,11 +65,12 @@ header .container {
   height: 1.3125rem;
   width: 5.8125rem;
   font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
   font-size: 1.125rem;
-  font-weight: 500; 
+  font-weight: 600; 
   line-height: 21px;
   text-align: left;
-  margin: 2.5rem 17.125rem 2.5rem 3.375rem;
+  margin: 2.5rem 17.125rem 3.75rem 3.375rem;
   padding-top: 1.25rem;
 }
 
@@ -138,7 +139,7 @@ header .container {
   font-weight: bold;
   line-height: 47px;
   text-align: center;
-  margin: 2.1875rem auto 2.1875rem auto; 
+  margin: 1rem auto 0.5rem auto; 
 }
 
 #col2{
@@ -150,7 +151,6 @@ header .container {
   width: 9.8125rem;
   height: 1.125rem;
 }
-
 
 
 #nav-mobile h3 {
@@ -174,60 +174,64 @@ header .container {
   padding: 0;
 }
 button.filter {
-  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+  width: 10rem;
+  height: 1.2rem;
+  box-sizing: content-box;
   left: 1.875rem;
   bottom: 8.75rem;
   position: relative;
-  margin-bottom: 0.625rem;
+  margin-bottom: 10px;
   display: block;
-  border-radius: 0.9375rem;
-  border: 0.125rem solid #007bc2;
-  background: rgba(255, 255, 255, .7);
-  padding: 0.625rem;
-  color: #007bc2;
+  border-radius: 18px;
+  border: none;
+  background: #fff;
+  padding: 0.75rem 0.75rem;
+  color: #ff6d00;
   font-weight: 600;
+  font-size: 0.9375rem;
+  line-height: 1.3;
+  transition: all 150ms linear;
+  box-shadow: 2px 5px 10px var(--color-smoke);
+  margin-right: 0px;
+}
+button.filter:hover {
+    color: #ff8400;
+    background-color: #f8f8f8;
+    opacity: 1;
+    
 }
 button.filter.active {
   border: 0;
-  padding: 0.75rem;
-  background: #007bc2;
+  background: #ff6d00;
   color: #fff;
 }
-.filter_button {
-  width: 6.25rem;
+
+button.filter.active:hover{
   color: #fff;
-  box-shadow: none;
-  border: none;
-}
-.filter_button:active {
-  background-color: inherit !important;
+    background-color: #ff8400;
+    opacity: 1;
 }
 
 @media only screen and (max-width: 992px) {
   header{
-    padding: 0px;
+    padding: 5px 0;
     float: none;
   }
   section{
     width: 100%;
     margin: 0px;
     position: absolute;
-    height: calc(100% - 50.4px);
+    height: calc(100% - 60.4px);
   }
   
   .fecha_hora_infoWindow {
     font-size: 12px;
   }
-  #eso {
-    margin: 0px;
-  }
-  button.filter {
-    bottom: 8.75rem;
-  }
 }
 
 
-@media only screen and (max-width: 340px) {
+@media only screen and (max-width: 340px), screen and (max-height: 320px) {
   html, body{
     font-size: 10px;
   }
@@ -241,6 +245,15 @@ button.filter.active {
     display: inline-block;
     width: 9rem;
   }
+
+  button.filter {
+    width: 7.5rem;
+    height: 0.8rem;
+    left: 1rem;
+    bottom: 7rem;
+  }
+
+ 
 }
 
 
@@ -276,10 +289,4 @@ button.filter.active {
   height: 2.45rem;
 }
 
-#eso {
-  margin: 0px;
-}
-button.filter {
-  bottom: 8.75rem;
-}
 }

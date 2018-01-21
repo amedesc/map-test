@@ -1,4 +1,5 @@
 var width = $(window).width();
+var heigth = $(window).height();
 var map;
 var markers = [];
 var allSeisms = [],
@@ -192,11 +193,9 @@ google.maps.event.addDomListener(window, 'load', function() {
     });
 
 
-    function addData (date, magnitude, depth, lat, lon, local){
-        var latestdate = moment(date, 'DD-MM-YYYY').format('DD-MM-YYYY');
-        var latesttime = moment(date, 'HH:mm').format('HH:mm');
-    	$('[data-latest-seism="localDate"]').text(latestdate);
-        $('[data-latest-seism="localTime"]').text(latesttime);
+    function addData (time, date, magnitude, depth, lat, lon, local){
+    	$('[data-latest-seism="localDate"]').text(date);
+        $('[data-latest-seism="localTime"]').text(time);
         $('[data-latest-seism="magnitude"]').text(magnitude + ' Mw');
         $('[data-latest-seism="depth"]').text(depth + ' km');
         $('[data-latest-seism="lat"]').text(Math.abs(lat) + (lat < 0?' S': ' N'));
@@ -206,10 +205,12 @@ google.maps.event.addDomListener(window, 'load', function() {
        
     function addMarkers(seisms) {
     	seisms.forEach(function(seism, index, arr) {
-    		var time = moment.tz(seism['origin_time'].toString().replace('Z', '+06:00'), "America/Costa_Rica").format('DD-MM-YYYY h:mm a')
-    				   seism.localDateTime = time;
+            var time = moment.tz(seism['origin_time'].toString().replace('Z', '+06:00'), "America/Costa_Rica").format('h:mm a');
+            var date = moment.tz(seism['origin_time'].toString().replace('Z', '+06:00'), "America/Costa_Rica").format('DD-MM-YYYY');
+            seism.localDateTime = moment.tz(seism['origin_time'].toString().replace('Z', '+06:00'), "America/Costa_Rica").format('DD-MM-YYYY h:mm a');
+
     		if(index === 0) {
-    			addData(seism.localDateTime, seism.magnitude, seism.depth, seism.lat, seism.lon, seism.local);
+    			addData(time, date, seism.magnitude, seism.depth, seism.lat, seism.lon, seism.local);
                 var markerPulse = new CustomMarker({
     				position: new google.maps.LatLng(seism.lat, seism.lon),
     				map: map
@@ -227,7 +228,11 @@ google.maps.event.addDomListener(window, 'load', function() {
                     map: map,
                     position: new google.maps.LatLng(seism.lat, seism.lon),
                     title: seism.local,
-                    icon: icon,
+                    icon: {
+                        url: icon,
+                        size: new google.maps.Size(13, 38),
+                        anchor: new google.maps.Point(6.5, 38)
+                    },
                    	zIndex: google.maps.Marker.MAX_ZINDEX + 1
                 });
 
@@ -237,12 +242,16 @@ google.maps.event.addDomListener(window, 'load', function() {
                     map: map,
                     position: new google.maps.LatLng(seism.lat, seism.lon),
                     title: seism.local,
-                    icon: icon
+                    icon: {
+                        url: icon,
+                        size: new google.maps.Size(13, 38),
+                        anchor: new google.maps.Point(6.5, 38)
+                    }
                    	
                 });
                }
                 var content = [
-                    '<b class="fecha_hora_infoWindow">Fecha y Hora Local: </b> <span class="fecha_hora_infoWindow">' + seism.localDateTime + '</span>',
+                    '<b class="fecha_hora_infoWindow">Fecha y hora local: </b> <span class="fecha_hora_infoWindow">' + seism.localDateTime + '</span>',
                     '<b class="fecha_hora_infoWindow">Magnitud: </b> <span class="fecha_hora_infoWindow">' + seism.magnitude + ' Mw' + '</span>',
                     '<b class="fecha_hora_infoWindow">Ubicaci&oacute;n: </b> <span class="fecha_hora_infoWindow">' + seism.local + '</span>',
                     '<b class="fecha_hora_infoWindow">Profundidad :</b> <span class="fecha_hora_infoWindow">' + seism.depth + ' km' + '</span>',
@@ -288,9 +297,19 @@ google.maps.event.addDomListener(window, 'load', function() {
         }
         else {
             map.setZoom(9);
-        } 
+        }
+        
+        fixInfoWindow();
     }
 
+    function fixInfoWindow(){
+        if (heigth <=560){
+            map.panBy(0, -70);
+        }
+        else if(heigth<=580){
+            map.panBy(0, -50);
+        }
+    }
 
 
     function add24(){
