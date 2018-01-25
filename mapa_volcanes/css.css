@@ -1,0 +1,117 @@
+html, body{
+    font-size: 16px;
+    width: 100%;
+    height: 100%;
+  }
+
+  section{
+    height: 100%;
+    margin-left: 400px;
+    overflow: hidden;
+  }
+
+  main {
+    width: 100%;
+    height: 100%;
+  }
+
+  header .container:first-child {
+    background: url('logo-rsn.svg') no-repeat center;
+    background-size: contain;
+    padding-left: 0;
+    width: 100%;
+  }
+  header .container:first-child a {
+    box-sizing: border-box;
+    padding: 0 10px;
+    font-size: 32px;
+    color: #0087e0;
+    display: inline-block;
+    border-radius: 0;
+    margin-left: 0;
+  }
+  header .container {
+    display: block;
+    margin: auto;
+    width: 80%;
+    margin-top: 0px;
+  }
+  #map {
+    width: 100%;
+    height: 100%;
+  }
+  #nav-mobile {
+    width: 400px !important;
+    height: 100% !important;
+    padding: 0%;
+  } 
+  
+  #nav-mobile .rsn-logo {
+    width: 84px;
+    height: 125px;
+    margin: 20px auto 0 auto;
+    display: block;
+  }
+
+  #nav-mobile h2 {
+    display: block;
+    width: 23.125rem;
+    height: 3.0625rem;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 2.5rem;
+    font-weight: bold;
+    line-height: 47px;
+    text-align: center;
+    margin: 1rem auto 0.5rem auto; 
+  }
+
+  #nav-mobile .map-meta{
+    background-color: #FAFAFA;
+    width: 100%;
+    margin-top: 60px;
+    padding-bottom: 20px
+  }
+
+
+  @media only screen and (max-width: 992px) {
+    header{
+      padding: 5px 0;
+      float: none;
+    }
+    section{
+      width: 100%;
+      margin: 0px;
+      position: absolute;
+      height: calc(100% - 60.4px);
+    }
+    
+    .fecha_hora_infoWindow {
+      font-size: 12px;
+    }
+  }
+  
+  
+  @media only screen and (max-width: 340px), screen and (max-height: 320px) {
+    html, body{
+      font-size: 10px;
+    }
+  }
+  
+  
+  @media only screen and (max-width: 450px) {
+    html, body{
+      width: 100%;
+      height: 100%;
+    }
+    
+    #nav-mobile {
+    width: 80% !important;
+    height: 100% !important;
+  }
+  
+  #nav-mobile h2 {
+    width: 18rem;
+    height: 2.45rem;
+  }
+  
+  }
