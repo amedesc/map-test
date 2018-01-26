@@ -264,9 +264,7 @@ google.maps.event.addDomListener(window, 'load', function() {
                     (
                         Math.abs(seism.lon) +
                         (seism.lat < 0 ? ' E' : ' O')
-                    ) + '</span>',
-                    '<b class="fecha_hora_infoWindow">Localizaci&oacute;n: </b> <span class="fecha_hora_infoWindow">Revisada por ' +
-                    seism.agency + '</span>'
+                    ) + '</span>'
                 ].join('<br />');
                 google.maps.event.addListener(marker, 'click', (function(marker) {
                     return function() {

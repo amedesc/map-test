@@ -1,12 +1,15 @@
 var map;
+var markers=[];
 var urlDis = "https://raw.githubusercontent.com/cluis11/pruebas/master/discontinuas.json";
 var urlCon = "https://raw.githubusercontent.com/cluis11/pruebas/master/continuas.json";
+var icon = "ic_circle.png"
 
 function initMap(){
 	map = new google.maps.Map(document.getElementById('map'), {
         zoom: 8,
         center: new google.maps.LatLng(9.4, -84),
         streetViewControl: false,
+        scrollwheel:  false,
         zoomControlOptions: {
               position: google.maps.ControlPosition.TOP_LEFT
           },
@@ -185,15 +188,25 @@ function addFallasCon(){
               strokeWeight: 2
             });
             fallaLine.setMap(map);
+            addMarker(falla[index])
         });
       });
 }
 
+function addMarker(falla){
+    var loc = falla[Math.floor(falla.length / 2)];
+    var marker = new google.maps.Marker({
+        map: map,
+        position: new google.maps.LatLng(loc),
+        title: "falla",
+        icon: icon
+    });
+}
 
 google.maps.event.addDomListener(window, 'load', function() {
     $('.button-collapse').sideNav({ menuWidth: 400 });
 
     initMap();
-    addFallasDis();
+    //addFallasDis();
     addFallasCon();
 });
