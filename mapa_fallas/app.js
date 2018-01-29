@@ -2,6 +2,7 @@ var map;
 var markers=[];
 var urlDis = "https://raw.githubusercontent.com/cluis11/pruebas/master/discontinuas.json";
 var urlCon = "https://raw.githubusercontent.com/cluis11/pruebas/master/continuas.json";
+var url="https://raw.githubusercontent.com/amedesc/map-test/master/mapa_fallas/falla.json";
 var icon = "ic_circle.png"
 
 function initMap(){
@@ -194,20 +195,41 @@ function addFallasDis(){
       });
 }
 
-function addFallasCon(){
-    $.getJSON(urlCon, function(json) {
-          var falla = json.continuas;
-          falla.forEach(function(seism, index, arr) {
-            var fallaLine = new google.maps.Polyline({
-              path: falla[index],
-              geodesic: true,
-              strokeColor: '#000',
-              strokeOpacity: 1.0,
-              strokeWeight: 2
-            });
-            fallaLine.setMap(map);
-        });
+
+function readJson(){
+    $.getJSON(url, function(doc) {
+        var fallas = doc.fallas;
+        fallas.forEach(function(falla, index, arr) {
+          var location = falla.location;
+         // if (location.hasOwnProperty('continuas') && location.hasOwnProperty('discontinuas')){
+          //    addFallasCon(location.continuas);
+           //   addFallasDis(location.discontinuas);
+         // }
+           if(location.hasOwnProperty('continuas')){
+              addFallasCon(location.continuas);
+          }
+         // else{
+          //    addFallasDis(location.discontinuas);
+         // }
       });
+    });
+}
+function addFallasCon(continuas){
+    if (continuas[0].constructor === Array){
+        continuas.forEach(function(element, index, arr) {    
+            addFallasCon(element);
+        });
+    }
+    else{
+        var fallaLine = new google.maps.Polyline({
+            path: continuas,
+            geodesic: true,
+            strokeColor: '#000',
+            strokeOpacity: 1.0,
+            strokeWeight: 2
+        });
+        fallaLine.setMap(map);
+    }
 }
 
 function addMarker(falla){
@@ -215,7 +237,7 @@ function addMarker(falla){
     var marker = new google.maps.Marker({
         map: map,
         position: new google.maps.LatLng(loc),
-        title: "falla",
+        title: "falla.name",
         icon: icon
     });
 }
@@ -224,6 +246,6 @@ google.maps.event.addDomListener(window, 'load', function() {
     $('.button-collapse').sideNav({ menuWidth: 400 });
 
     initMap();
-    addFallasDis();
-    addFallasCon();
+    //addFallasDis();
+    readJson();
 });
