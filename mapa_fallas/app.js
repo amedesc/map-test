@@ -9,7 +9,6 @@ function initMap(){
         zoom: 8,
         center: new google.maps.LatLng(9.4, -84),
         streetViewControl: false,
-        scrollwheel:  false,
         zoomControlOptions: {
               position: google.maps.ControlPosition.TOP_LEFT
           },
@@ -159,9 +158,28 @@ function addFallasDis(){
         strokeOpacity: 1,
         scale: 2
       };
+
+      var lineaDiscontinuax = {
+        path: 'M 0,-1 0,1',
+        strokeOpacity: 1,
+        scale: 6
+      };
       $.getJSON(urlDis, function(json) {
           var falla = json.discontinuas;
           falla.forEach(function(seism, index, arr) {
+            if (index==61){
+                var line = new google.maps.Polyline({
+                    path: falla[index],
+                    strokeOpacity: 0,
+                    strokeColor: '#ff0000',
+                    icons: [{
+                      icon: lineaDiscontinuax,
+                      offset: '0',
+                      repeat: '10px'
+                    }],
+                    map: map
+                  });
+            }
             var line = new google.maps.Polyline({
             path: falla[index],
             strokeOpacity: 0,
@@ -188,7 +206,6 @@ function addFallasCon(){
               strokeWeight: 2
             });
             fallaLine.setMap(map);
-            addMarker(falla[index])
         });
       });
 }
@@ -207,6 +224,6 @@ google.maps.event.addDomListener(window, 'load', function() {
     $('.button-collapse').sideNav({ menuWidth: 400 });
 
     initMap();
-    //addFallasDis();
+    addFallasDis();
     addFallasCon();
 });

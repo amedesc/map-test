@@ -58,14 +58,14 @@ header .container {
 #nav-mobile .map-meta{
   background-color: #FAFAFA;
   width: 100%;
-  margin-top: 60px;
+  margin-top: 40px;
   padding-bottom: 20px
 }
 #nav-mobile .map-meta h2 {
+  color: #546E7A; 
   height: 1.3125rem;
   width: 5.8125rem;
   font-family: 'Open Sans', sans-serif;
-  font-weight: bold;
   font-size: 1.125rem;
   font-weight: 600; 
   line-height: 21px;
@@ -79,7 +79,7 @@ header .container {
   width: 19.6875rem; 
   color: #546E7A; 
   font-family: 'Open Sans', sans-serif;  
-  font-size: 0.8125rem;  
+  font-size: 1.125rem;
   line-height: 15px;
   margin: 0px 3.25rem 1.25rem 3.375rem;
 }
@@ -154,12 +154,14 @@ header .container {
 
 
 #nav-mobile h3 {
-  color: #546E7A;
-  font-size: 0.9375rem;
+  color: #000;
+  font-size: 1.125rem;
+  font-weight: 600; 
   text-align: left;
   font-family: 'Open Sans', sans-serif;
-  line-height: 18px;
+  line-height: 21px;
   margin-bottom: 0px;
+
 }
 
 #nav-mobile p.data {
