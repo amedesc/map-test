@@ -412,7 +412,7 @@ window.addEventListener('load', function () {
             });
         };
     function getSeisms(){
-        $.getJSON('https://raw.githubusercontent.com/amedesc/map-test/master/map_18nov.geojson', function (result)  {
+        $.getJSON('https://raw.githubusercontent.com/amedesc/map-test/master/mapa_poc/data/map_18nov.geojson', function (result)  {
             allSeisms = result.features;
             addMarkers(allSeisms);
         }, function(error) {
