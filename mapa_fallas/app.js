@@ -4,9 +4,14 @@ var urlDis = "https://raw.githubusercontent.com/cluis11/pruebas/master/discontin
 var urlCon = "https://raw.githubusercontent.com/cluis11/pruebas/master/continuas.json";
 var url="https://raw.githubusercontent.com/amedesc/map-test/master/mapa_fallas/falla.json";
 var icon = "ic_circle.png"
+var color="#000", size=2;
+var nameX;
+var consulta="Cipreses";
 
 function initMap(){
 	map = new google.maps.Map(document.getElementById('map'), {
+        
+        minZoom:6,
         zoom: 8,
         center: new google.maps.LatLng(9.4, -84),
         streetViewControl: false,
@@ -153,21 +158,24 @@ function initMap(){
     });
 }
 
+function drawLines(location){
+    if (location.hasOwnProperty('continuas') && location.hasOwnProperty('discontinuas')){
+        addFallasCon(location.continuas);
+        addFallasDis(location.discontinuas);
+    }
+    else if(location.hasOwnProperty('continuas')){
+        addFallasCon(location.continuas);
+    }
+    else{
+        addFallasDis(location.discontinuas);
+    }
+}
 function readJson(){
     $.getJSON(url, function(doc) {
         var fallas = doc.fallas;
         fallas.forEach(function(falla, index, arr) {
-          var location = falla.location;
-          if (location.hasOwnProperty('continuas') && location.hasOwnProperty('discontinuas')){
-              addFallasCon(location.continuas);
-              addFallasDis(location.discontinuas);
-          }
-          else if(location.hasOwnProperty('continuas')){
-              addFallasCon(location.continuas);
-          }
-          else{
-              addFallasDis(location.discontinuas);
-          }
+            nameX = String(falla.name);
+          drawLines(falla.location);
       });
     });
 }
@@ -180,21 +188,37 @@ function addFallasDis(discontinuas){
         });
     }
     else{
-    var lineaDiscontinua = {
-        path: 'M 0,-1 0,1',
-        strokeOpacity: 1,
-        scale: 2
-    };
-    var line = new google.maps.Polyline({
-        path: discontinuas,
-        strokeOpacity: 0,
-            icons: [{
-              icon: lineaDiscontinua,
-              offset: '0',
-              repeat: '10px'
-            }],
-            map: map
-          });
+        var lineaDiscontinua = {
+            path: 'M 0,-1 0,1',
+            strokeOpacity: 1,
+            scale: size
+        };
+        if (nameX===consulta){
+            var line = new google.maps.Polyline({
+                path: discontinuas,
+                strokeOpacity: 0,
+                strokeColor: '#ff0000',
+                    icons: [{
+                      icon: lineaDiscontinua,
+                      offset: '0',
+                      repeat: '10px'
+                    }],
+                    map: map
+                  });
+        }
+        else{
+            var line = new google.maps.Polyline({
+                path: discontinuas,
+                strokeOpacity: 0,
+                strokeColor: color,
+                    icons: [{
+                      icon: lineaDiscontinua,
+                      offset: '0',
+                      repeat: '10px'
+                    }],
+                    map: map
+                  });
+        }
         }
 }
 
@@ -205,13 +229,25 @@ function addFallasCon(continuas){
         });
     }
     else{
-        var fallaLine = new google.maps.Polyline({
-            path: continuas,
-            geodesic: true,
-            strokeColor: '#000',
-            strokeOpacity: 1.0,
-            strokeWeight: 2
-        });
+        var fallaLine;
+        if (nameX===consulta){
+            fallaLine = new google.maps.Polyline({
+                path: continuas,
+                geodesic: true,
+                strokeColor:'#ff0000',
+                strokeOpacity: 1.0,
+                strokeWeight: 4
+            });
+        }
+        else{
+            fallaLine = new google.maps.Polyline({
+                path: continuas,
+                geodesic: true,
+                strokeColor: color,
+                strokeOpacity: 1.0,
+                strokeWeight: size
+            });
+        }
         fallaLine.setMap(map);
     }
 }
@@ -226,9 +262,11 @@ function addMarker(falla){
     });
 }
 
+
 google.maps.event.addDomListener(window, 'load', function() {
     $('.button-collapse').sideNav({ menuWidth: 400 });
 
     initMap();
     readJson();
 });
+
