@@ -1,0 +1,38 @@
+<head>
+    <link rel=“stylesheet” type=“text/css” href=“//fonts.googleapis.com/css?family=Open+Sans”>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
+    <script src="js/facemap.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/facemap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <meta name="viewport" content="width=device-width">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <a href="#" data-activates="nav-mobile" class="button-collapse top-nav waves-effect waves-dark circle hide-on-large-only">
+                <i class="mdi-navigation-menu"></i>
+            </a>
+        </div>
+        <div id="nav-mobile" class="side-nav fixed">
+            <img class="rsn-logo" src="assets/logo-rsn.svg">
+            <h2>¿Lo sentiste?</h2>
+            <div class="input-field">
+                <input id="search" type="search">
+                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+            </div>
+            <div class="link-container">
+                <a href="#">¿Sentiste un sismo que no aparece?</a>
+            </div>		
+        </div>
+    </header>
+    <section>
+        <main>
+            <div id="map" style="width: 100%; height: 100%"></div>
+        </main>
+    </section>
+</body>

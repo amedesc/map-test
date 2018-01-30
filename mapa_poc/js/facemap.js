@@ -355,16 +355,16 @@ window.addEventListener('load', function () {
             'getWebMapSeisms' +
             '?access_token=559aca63553be4973f58dbc1',
         addMarkers = function(seisms) {
-            var icon1 = '../map-test/icons/1.svg',
-                icon2 = '../map-test/icons/2.svg',
-                icon3 = '../map-test/icons/3.svg',
-                icon4 = '../map-test/icons/4.svg',
-                icon5 = '../map-test/icons/5.svg',
-                icon6 = '../map-test/icons/6.svg',
-                icon7 = '../map-test/icons/7.svg',
-                icon8 = '../map-test/icons/8.svg',
-                icon9 = '../map-test/icons/9.svg',
-                icon10 = '../map-test/icons/10.svg';
+            var icon1 = './assets/1.svg',
+                icon2 = './assets/2.svg',
+                icon3 = './assets/3.svg',
+                icon4 = './assets/4.svg',
+                icon5 = './assets/5.svg',
+                icon6 = './assets/6.svg',
+                icon7 = './assets/7.svg',
+                icon8 = './assets/8.svg',
+                icon9 = './assets/9.svg',
+                icon10 = './assets/10.svg';
             seisms.forEach(function(seism, index, arr) {
                 var icon = icon1;
                 switch(seism.properties.intensity) {
@@ -399,16 +399,17 @@ window.addEventListener('load', function () {
                         icon = icon10;
                         break;
                 }
-                var marker = new SVGMarker({
-                    map: map,
-                    position: new google.maps.LatLng(seism.geometry.coordinates[1], seism.geometry.coordinates[0]),
-                    title: seism.local,
-                    icon: {
-                         anchor: new google.maps.Point(12.5, 35),
-                         size: new google.maps.Size(25, 35),
-                         url: icon
-                     }
-                });           
+                var marker = new google.maps.Marker({
+                  map: map,
+                  position: new google.maps.LatLng(seism.geometry.coordinates[1], seism.geometry.coordinates[0]),
+                  title: seism.local,
+                  icon: {
+                      url: icon,
+                      size: new google.maps.Size(25, 35),
+                      anchor: new google.maps.Point(12.5, 35)
+                  },
+                   //zIndex: google.maps.Marker.MAX_ZINDEX + 1
+                });
             });
         };
     function getSeisms(){

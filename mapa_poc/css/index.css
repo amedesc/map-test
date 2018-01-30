@@ -1,0 +1,87 @@
+html, body{
+    font-size: 16px;
+    width: 100%;
+    height: 100%;
+  }
+  
+  header {
+    float: left;
+  }
+  
+  section{
+    height: 100%;
+    margin-left: 400px;
+    overflow: hidden;
+  }
+  
+  main {
+    width: 100%;
+    height: 100%;
+  }
+  header .container {
+    display: block;
+    margin: auto;
+    width: 80%;
+    margin-top: 0px;
+  }
+  #map {
+    width: 100%;
+    height: 100%;
+  }
+  #nav-mobile {
+    width: 400px !important;
+    height: 100% !important;
+    padding: 0%;
+  } 
+  
+  #nav-mobile .rsn-logo {
+    width: 84px;
+    height: 125px;
+    margin: 20px auto 0 auto;
+    display: block;
+  }
+
+  #nav-mobile h2 {
+    display: block;
+    height: 49px;
+	width: 307px;
+	font-family: "Open Sans", sans-serif;
+	font-size: 40px;
+	font-weight: bold;
+	line-height: 55px;
+	text-align: center;
+    margin: 1rem auto 0.5rem auto; 
+  }
+  .side-nav li {
+    padding: 0;
+  }
+
+  .input-field {
+	height: 48px;
+	width: 355px;
+	border-radius: 2px;
+	background-color: #FFFFFF;
+    box-shadow: 0 0 2px 0 rgba(0,0,0,0.12), 0 2px 2px 0 rgba(0,0,0,0.24);
+    margin: 11px 26px 15px 26px;
+}
+
+.link-container a {
+	color: #FF6D00;
+	font-family: "Open Sans", sans-serif;
+	font-size: 18px;
+	line-height: 24px;
+    text-align: center;
+    margin: auto;
+}
+  
+  @media only screen and (max-width: 450px) {
+    html, body{
+      width: 100%;
+      height: 100%;
+    }
+  #nav-mobile h2 {
+    width: 18rem;
+    height: 2.45rem;
+  }
+  
+  }
