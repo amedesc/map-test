@@ -4,9 +4,9 @@ var map;
 var markers = [];
 var allSeisms = [],
 url = 'http://rsnapiusr.ucr.ac.cr/api/seisms/' + 'getWebMapSeisms' + '?access_token=559aca63553be4973f58dbc1';
-var normalIcon = '../mapa/icons/pin_verde.svg',
-                midIcon = '../mapa/icons/pin_naranja.svg',
-                dangerIcon = '../mapa/icons/pin_rojo.svg',
+var normalIcon = '../map/icons/pin_verde.svg',
+                midIcon = '../map/icons/pin_naranja.svg',
+                dangerIcon = '../map/icons/pin_rojo.svg',
                 infowindow = new google.maps.InfoWindow();
 
 CustomMarker.prototype = new google.maps.OverlayView();
