@@ -153,37 +153,41 @@ function initMap(){
     });
 }
 
-function addFallasDis(){
+function readJson(){
+    $.getJSON(url, function(doc) {
+        var fallas = doc.fallas;
+        fallas.forEach(function(falla, index, arr) {
+          var location = falla.location;
+          if (location.hasOwnProperty('continuas') && location.hasOwnProperty('discontinuas')){
+              addFallasCon(location.continuas);
+              addFallasDis(location.discontinuas);
+          }
+          else if(location.hasOwnProperty('continuas')){
+              addFallasCon(location.continuas);
+          }
+          else{
+              addFallasDis(location.discontinuas);
+          }
+      });
+    });
+}
+
+
+function addFallasDis(discontinuas){
+    if (discontinuas[0].constructor === Array){
+        discontinuas.forEach(function(element, index, arr) {    
+            addFallasDis(element);
+        });
+    }
+    else{
     var lineaDiscontinua = {
         path: 'M 0,-1 0,1',
         strokeOpacity: 1,
         scale: 2
-      };
-
-      var lineaDiscontinuax = {
-        path: 'M 0,-1 0,1',
-        strokeOpacity: 1,
-        scale: 6
-      };
-      $.getJSON(urlDis, function(json) {
-          var falla = json.discontinuas;
-          falla.forEach(function(seism, index, arr) {
-            if (index==61){
-                var line = new google.maps.Polyline({
-                    path: falla[index],
-                    strokeOpacity: 0,
-                    strokeColor: '#ff0000',
-                    icons: [{
-                      icon: lineaDiscontinuax,
-                      offset: '0',
-                      repeat: '10px'
-                    }],
-                    map: map
-                  });
-            }
-            var line = new google.maps.Polyline({
-            path: falla[index],
-            strokeOpacity: 0,
+    };
+    var line = new google.maps.Polyline({
+        path: discontinuas,
+        strokeOpacity: 0,
             icons: [{
               icon: lineaDiscontinua,
               offset: '0',
@@ -191,29 +195,9 @@ function addFallasDis(){
             }],
             map: map
           });
-        });
-      });
+        }
 }
 
-
-function readJson(){
-    $.getJSON(url, function(doc) {
-        var fallas = doc.fallas;
-        fallas.forEach(function(falla, index, arr) {
-          var location = falla.location;
-         // if (location.hasOwnProperty('continuas') && location.hasOwnProperty('discontinuas')){
-          //    addFallasCon(location.continuas);
-           //   addFallasDis(location.discontinuas);
-         // }
-           if(location.hasOwnProperty('continuas')){
-              addFallasCon(location.continuas);
-          }
-         // else{
-          //    addFallasDis(location.discontinuas);
-         // }
-      });
-    });
-}
 function addFallasCon(continuas){
     if (continuas[0].constructor === Array){
         continuas.forEach(function(element, index, arr) {    
@@ -246,6 +230,5 @@ google.maps.event.addDomListener(window, 'load', function() {
     $('.button-collapse').sideNav({ menuWidth: 400 });
 
     initMap();
-    //addFallasDis();
     readJson();
 });
