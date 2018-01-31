@@ -53,6 +53,7 @@ CustomMarker.prototype.remove = function() {
 */
 function initMap(){
 	map = new google.maps.Map(document.getElementById('map'), {
+        minZoom:6,
         zoom: 8,
         center: new google.maps.LatLng(9.4, -84),
         streetViewControl: false,
