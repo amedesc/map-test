@@ -357,17 +357,15 @@ google.maps.event.addListener(infowindow, 'domready', function() {
     iwBackground.children(':nth-child(4)').css({'display' : 'none'});
     
     // Changes the desired tail shadow color.
-    iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow': '#ff6d00 0px 1px 6px', 'z-index' : '1'});
+    iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow': 'none', 'z-index' : '1'});
 
     var iwCloseBtn = iwOuter.next();
-
     // Apply the desired effect to the close button
     iwCloseBtn.css({
-    opacity: '1', // by default the close button has an opacity of 0.7
-    right: '25px', top: '10px', // button repositioning
-    border: '0px',
-    'border-radius': '13px',
-    'box-shadow': '0 0 5px #ff6d00'
-    });
+        opacity: '1', // by default the close button has an opacity of 0.7
+        right: '7px', top: '20px', // button repositioning
+        border: '0px',
+        });
+    
 
  });

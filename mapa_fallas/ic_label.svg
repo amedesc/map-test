@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="118px" height="35px" viewBox="0 0 118 35" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>ic_label copy</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="106" height="21" rx="10.5"></rect>
+        <filter x="-9.4%" y="-38.1%" width="118.9%" height="195.2%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="3" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Web" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_label-copy" transform="translate(6.000000, 4.000000)">
+            <g id="Rectangle-2-Copy-4">
+                <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                <use fill="#263238" fill-rule="evenodd" xlink:href="#path-1"></use>
+            </g>
+            <text id="Agua-Caliente" font-family="Roboto-Regular, Roboto" font-size="12" font-weight="normal" fill="#FFFFFF">
+                <tspan x="15.9541016" y="13">Agua Caliente</tspan>
+            </text>
+            <g id="Group-26-Copy" transform="translate(46.000000, 16.000000)" fill="#FF6D00" stroke="#FFFFFF" stroke-width="0.5">
+                <circle id="Oval-2-Copy-5" cx="7" cy="7" r="7"></circle>
+            </g>
+        </g>
+    </g>
+</svg>
