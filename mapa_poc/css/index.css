@@ -1,87 +1,527 @@
-html, body{
-    font-size: 16px;
-    width: 100%;
-    height: 100%;
-  }
-  
-  header {
-    float: left;
-  }
-  
-  section{
-    height: 100%;
-    margin-left: 400px;
-    overflow: hidden;
-  }
-  
-  main {
-    width: 100%;
-    height: 100%;
-  }
-  header .container {
-    display: block;
-    margin: auto;
-    width: 80%;
-    margin-top: 0px;
-  }
-  #map {
-    width: 100%;
-    height: 100%;
-  }
-  #nav-mobile {
-    width: 400px !important;
-    height: 100% !important;
-    padding: 0%;
-  } 
-  
-  #nav-mobile .rsn-logo {
-    width: 84px;
-    height: 125px;
-    margin: 20px auto 0 auto;
-    display: block;
-  }
-
-  #nav-mobile h2 {
-    display: block;
-    height: 49px;
-	width: 307px;
-	font-family: "Open Sans", sans-serif;
-	font-size: 40px;
-	font-weight: bold;
-	line-height: 55px;
-	text-align: center;
-    margin: 1rem auto 0.5rem auto; 
-  }
-  .side-nav li {
-    padding: 0;
-  }
-
-  .input-field {
-	height: 48px;
-	width: 355px;
-	border-radius: 2px;
-	background-color: #FFFFFF;
-    box-shadow: 0 0 2px 0 rgba(0,0,0,0.12), 0 2px 2px 0 rgba(0,0,0,0.24);
-    margin: 11px 26px 15px 26px;
+.title-image {
+	margin-top: 22px;
+	display: block;
+	background-image: url(../assets/logo-rsn.svg);
+	width: 84px;
+	height: 125px;
+	margin: auto;
+	margin-top: 31px;
+	background-size: 84px 125px;
 }
 
-.link-container a {
+.side-nav{
+	overflow-y: hidden;
+}
+
+.side-nav:hover{
+	overflow-y: scroll;
+}
+
+.help-icon{
+	margin-top: 22px;
+	display: block;
+	float: right;
+	/* background-image: url(../assets/ic_shape.png); */
+	height: 27px;
+	width: 27px;
 	color: #FF6D00;
-	font-family: "Open Sans", sans-serif;
+}
+.title-text {
+	text-align: center;
+	font-size: 40px;
+	font-family:  "Open Sans", sans-serif;;
+	font-weight: bold;
+	line-height: 47px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.side-nav .cards{
+	overflow-y: hidden;
+}
+
+/* .col.s1.left-divider {
+	border-left: 1px solid black;
+} */
+
+header,
+main,
+footer {
+	padding-left: 400px;
+}
+
+@media only screen and (max-width: 992px) {
+	header,
+	main,
+	footer {
+		padding-left: 0;
+	}
+}
+
+.side-nav {
+	/* width: 421px; */
+}
+
+.side-nav .header {
+	margin-left: 33px;
+	margin-right: 33px;
+}
+
+
+.side-nav .cards .card-container{
+	padding-left: 33px;
+	padding-right: 33px;
+}
+
+.side-nav .nav-element {
+	margin-top: 5%;
+}
+
+.side-nav div a {
+	margin: auto;
+	text-align: center;
+	color: #FF6D00;
 	font-size: 18px;
 	line-height: 24px;
-    text-align: center;
-    margin: auto;
+	font-family: "Open Sans", sans-serif;
 }
-  
-  @media only screen and (max-width: 450px) {
-    html, body{
-      width: 100%;
-      height: 100%;
-    }
-  #nav-mobile h2 {
-    width: 18rem;
-    height: 2.45rem;
-  }
-  
-  }
+
+.side-nav .input-field {
+	border-left: 2px;
+	border-top: 2px;
+	border-right: 2px;
+	border-radius: 2px;
+	box-shadow: 0 0 2px rgba(0, 0, 0, 12);
+}
+
+.row .col.s3.earthquake-image.orange-icon{
+	background-image: url(../assets/epi_naranja.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	height: 46px;
+	width: 46px;
+	margin-top: 10px;
+}
+
+.row .col.s3.earthquake-image.red-icon{
+	background-image: url(../assets/epi_rojo.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	height: 46px;
+	width: 46px;
+	margin-top: 10px;
+}
+
+.row .col.s3.earthquake-image.green-icon{
+	background-image: url(../assets/epi_verde.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	height: 46px;
+	width: 46px;
+	margin-top: 10px;
+}
+.link-container {
+	text-align: center;
+}
+
+.menu-element {
+	/* margin-top: 10%; */
+}
+
+#map {
+	width: 100%;
+	height: 100vh;
+}
+
+
+.placeholder-text{
+	margin-bottom: 15px;
+display: block;
+float: right;
+}
+
+.search-bar-container{
+	padding-top: 30px;
+}
+.input-field input[type=search] ~ .mdi-navigation-close, .input-field input[type=search] ~ .material-icons{
+	color: black;
+}
+input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):focus:not([readonly]), input[type=password]:not(.browser-default):focus:not([readonly]), input[type=email]:not(.browser-default):focus:not([readonly]), input[type=url]:not(.browser-default):focus:not([readonly]), input[type=time]:not(.browser-default):focus:not([readonly]), input[type=date]:not(.browser-default):focus:not([readonly]), input[type=datetime]:not(.browser-default):focus:not([readonly]), input[type=datetime-local]:not(.browser-default):focus:not([readonly]), input[type=tel]:not(.browser-default):focus:not([readonly]), input[type=number]:not(.browser-default):focus:not([readonly]), input[type=search]:not(.browser-default):focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]){
+	border-bottom: 1px solid #9e9e9e;
+	box-shadow: 0 1px 0 0  #9e9e9e;
+}
+
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) {
+	.side-nav.fixed{
+		width: 100%;
+	}
+	.map-container{
+		padding-left: 0px;
+	}
+	.cards{
+		margin-top:30px;
+		font-family:  "Open Sans", sans-serif;;
+	}
+	.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
+		font-size: 15px;
+		text-align: center;
+		color: #FF6D00;
+		text-align: center;
+		font-weight: 600;
+	}
+	
+	.side-nav .header .input-field  input{
+		margin-bottom: 0px;
+	}
+	
+	.input-field{
+		margin-bottom: 20px;
+	}
+	.card .card-content {
+		padding-bottom: 0px;
+		padding: 15px 15px 0px 15px;
+	}
+	
+	.card .card-content .col.s1 .left-divider{
+		height: 58px;
+		width: 0px;
+		border: 0.5px solid #B0BEC5;
+	}
+	
+	.card .card-content p.magnitude-text {
+		color: #263238;
+		font-family:  "Open Sans", sans-serif;;
+		font-size: 36px;
+		font-weight: bold;
+		line-height: 49px;
+		text-align: center;
+	}
+	
+	.card .card-content .row{
+		margin-bottom: 0px;
+	}
+	
+	
+	.card .card-content p.unit-text {
+		color: #263238;
+		font-family: "Open Sans", sans-serif;;
+		font-size: 15px;
+		line-height: 20px;
+		text-align: center;
+	}
+	
+	.card .card-content p.time-text {
+		height: 27px;
+		width: 170px;
+		color: #546E7A;
+		font-family:  "Open Sans", sans-serif;;
+		font-size: 20px;
+		line-height: 27px;
+	}
+	
+	.card .card-content p.location-text {
+		height: 20px;
+		width: 157px;
+		color: #546E7A;
+		font-family:  "Open Sans", sans-serif;
+		font-size: 15px;
+		line-height: 20px;
+	}
+	
+	.card .card-action {
+		margin: 0px;
+		padding: 5px;
+		border-top: 0px;
+		visibility: hidden;
+		height: 0px;
+	}
+	
+	.card .card-action .row{
+		margin-bottom: 0px;
+	}
+	
+	.card-container.selected .card .card-action{
+		visibility: visible;
+		height: 43px;
+		margin-top: 15px;
+		margin-bottom: 22px;
+	}
+	
+	.side-nav .cards .card-container.selected{
+		border-left: 5px solid #FF6D00;
+		padding: 2px 0 2px 0px;
+		background-color: #FAFAFA;
+		padding-left: 28px;
+		padding-right: 33px;
+	}
+	
+	
+	.side-nav .cards .card-container.selected .card{
+		margin: 15px 0px 15px 0px;
+		padding-bottom: 1px;
+	}
+
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen 
+and (max-width : 320px) {
+	.side-nav.fixed{
+		width: 100%;
+	}
+	.map-container{
+		padding-left: 0px;
+	}
+	.cards{
+		margin-top:30px;
+		font-family:  "Open Sans", sans-serif;;
+	}
+	.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
+		font-size: 15px;
+		text-align: center;
+		color: #FF6D00;
+		text-align: center;
+		font-weight: 600;
+	}
+	
+	.side-nav .header .input-field  input{
+		margin-bottom: 0px;
+	}
+	
+	.input-field{
+		margin-bottom: 20px;
+	}
+	.card .card-content {
+		padding-bottom: 0px;
+		padding: 15px 15px 0px 15px;
+	}
+	
+	.card .card-content .col.s1 .left-divider{
+		height: 58px;
+		width: 0px;
+		border: 0.5px solid #B0BEC5;
+	}
+	
+	.card .card-content p.magnitude-text {
+		color: #263238;
+		font-family: "Open Sans", sans-serif;
+		font-size: 36px;
+		font-weight: bold;
+		line-height: 49px;
+		text-align: center;
+	}
+	
+	.card .card-content .row{
+		margin-bottom: 0px;
+	}
+	
+	
+	.card .card-content p.unit-text {
+		color: #263238;
+		font-family:  "Open Sans", sans-serif;;
+		font-size: 15px;
+		line-height: 20px;
+		text-align: center;
+	}
+	
+	.card .card-content p.time-text {
+		height: 27px;
+		width: 170px;
+		color: #546E7A;
+		font-family:  "Open Sans", sans-serif;;
+		font-size: 20px;
+		line-height: 27px;
+	}
+	
+	.card .card-content p.location-text {
+		height: 20px;
+		width: 157px;
+		color: #546E7A;
+		font-family: "Open Sans", sans-serif;;
+		font-size: 15px;
+		line-height: 20px;
+	}
+	
+	.card .card-action {
+		margin: 0px;
+		padding: 5px;
+		border-top: 0px;
+		visibility: hidden;
+		height: 0px;
+	}
+	
+	.card .card-action .row{
+		margin-bottom: 0px;
+	}
+	
+	.card-container.selected .card .card-action{
+		visibility: visible;
+		height: 43px;
+		margin-top: 15px;
+	}
+	
+	.side-nav .cards .card-container.selected{
+		border-left: 5px solid #FF6D00;
+		padding: 2px 0 2px 0px;
+		background-color: #FAFAFA;
+		padding-left: 28px;
+		padding-right: 33px;
+	}
+		
+	.side-nav .cards .card-container.selected .card{
+		margin: 15px 0px 15px 0px;
+	}
+}
+
+/* iPads (portrait) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : portrait) {
+/* Styles */
+}
+
+/* Desktops and laptops ----------- */
+@media only screen 
+and (min-width : 1224px) {
+	.button-collapse{
+		height: 0px;
+		visibility: hidden;
+		display: block;
+	}
+	.side-nav.fixed{
+		width: 500px;
+	}
+	.map-container{
+		padding-left: 500px;
+	}
+	.cards{
+		margin-top:30px;
+		font-family:  "Open Sans", sans-serif;;
+	}
+	.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
+		font-size: 15px;
+		text-align: center;
+		color: #FF6D00;
+		text-align: center;
+		font-weight: 600;
+	}
+	
+	.side-nav .header .input-field  input{
+		margin-bottom: 0px;
+	}
+	
+	.input-field{
+		margin-bottom: 20px;
+	}
+	.card .card-content {
+		padding-bottom: 0px;
+		padding: 15px 15px 0px 15px;
+	}
+	
+	.card .card-content .col.s1 .left-divider{
+		height: 58px;
+		width: 0px;
+		border: 0.5px solid #B0BEC5;
+	}
+	
+	.card .card-content p.magnitude-text {
+		color: #263238;
+		font-family:  "Open Sans", sans-serif;;
+		font-size: 36px;
+		font-weight: bold;
+		line-height: 49px;
+		text-align: center;
+	}
+	
+	.card .card-content .row{
+		margin-bottom: 0px;
+	}
+	
+	
+	.card .card-content p.unit-text {
+		color: #263238;
+		font-family: "Open Sans", sans-serif;;
+		font-size: 15px;
+		line-height: 20px;
+		text-align: center;
+	}
+	
+	.card .card-content p.time-text {
+		height: 27px;
+		width: 170px;
+		color: #546E7A;
+		font-family:  "Open Sans", sans-serif;;
+		font-size: 20px;
+		line-height: 27px;
+	}
+	
+	.card .card-content p.location-text {
+		height: 20px;
+		width: 157px;
+		color: #546E7A;
+		font-family:  "Open Sans", sans-serif;
+		font-size: 15px;
+		line-height: 20px;
+	}
+	
+	.card .card-action {
+		margin: 0px;
+		padding: 5px;
+		border-top: 0px;
+		visibility: hidden;
+		height: 0px;
+	}
+	
+	.card .card-action .row{
+		margin-bottom: 0px;
+	}
+	
+	.card-container.selected .card .card-action{
+		visibility: visible;
+		height: 43px;
+		margin-top: 15px;
+		margin-bottom: 22px;
+	}
+	
+	.side-nav .cards .card-container.selected{
+		border-left: 5px solid #FF6D00;
+		padding: 2px 0 2px 0px;
+		background-color: #FAFAFA;
+		padding-left: 28px;
+		padding-right: 33px;
+	}
+	
+	
+	.side-nav .cards .card-container.selected .card{
+		margin: 15px 0px 15px 0px;
+		padding-bottom: 1px;
+	}
+
+}
+
+/* Large screens ----------- */
+@media only screen 
+and (min-width : 1824px) {
+/* Styles */
+}
+
+/* iPhone 4 ----------- */
+@media
+only screen and (-webkit-min-device-pixel-ratio : 1.5),
+only screen and (min-device-pixel-ratio : 1.5) {
+}

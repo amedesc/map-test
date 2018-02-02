@@ -1,0 +1,50 @@
+[
+	{
+		"id":1,
+		"intensity": 5.5,
+		"color_earthquake":"orange",
+		"timestamp":"35 minutos",
+		"location":"San José, San Pedro",
+		"points_url":"https://raw.githubusercontent.com/fergo125/rsn-losentiste-web/master/data/point.json?token=AHj5HqwDq3KLJEAvpFzPJ2QzKO2Zq516ks5aeeXUwA%3D%3D"
+	},
+	{
+		"id":2,
+		"intensity": 7.5,
+		"color_earthquake":"red",
+		"timestamp":"35 minutos",
+		"location":"San José, San Pedro",
+		"points_url":"https://raw.githubusercontent.com/fergo125/rsn-losentiste-web/master/data/point.json?token=AHj5HqwDq3KLJEAvpFzPJ2QzKO2Zq516ks5aeeXUwA%3D%3D"
+	},
+	{
+		"id":3,
+		"intensity": 2.5,
+		"color_earthquake":"green",
+		"timestamp":"35 minutos",
+		"location":"San José, San Pedro",
+		"points_url":"https://raw.githubusercontent.com/fergo125/rsn-losentiste-web/master/data/point.json?token=AHj5HqwDq3KLJEAvpFzPJ2QzKO2Zq516ks5aeeXUwA%3D%3D"
+	},
+	{
+		"id":4,
+		"intensity": 8.5,
+		"color_earthquake":"red",
+		"timestamp":"35 minutos",
+		"location":"San José, San Pedro",
+		"points_url":"https://raw.githubusercontent.com/fergo125/rsn-losentiste-web/master/data/point.json?token=AHj5HqwDq3KLJEAvpFzPJ2QzKO2Zq516ks5aeeXUwA%3D%3D"
+	},
+	{
+		"id":5,
+		"intensity": 4.5,
+		"color_earthquake":"orange",
+		"timestamp":"35 minutos",
+		"location":"San José, San Pedro",
+		"points_url":"https://raw.githubusercontent.com/fergo125/rsn-losentiste-web/master/data/point.json?token=AHj5HqwDq3KLJEAvpFzPJ2QzKO2Zq516ks5aeeXUwA%3D%3D"
+	},
+	{
+		"id":6,
+		"intensity": 3.5,
+		"color_earthquake":"green",
+		"timestamp":"35 minutos",
+		"location":"San José, San Pedro",
+		"points_url":"https://raw.githubusercontent.com/fergo125/rsn-losentiste-web/master/data/point.json?token=AHj5HqwDq3KLJEAvpFzPJ2QzKO2Zq516ks5aeeXUwA%3D%3D"
+	}
+]
