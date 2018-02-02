@@ -338,3 +338,36 @@ google.maps.event.addDomListener(window, 'load', function() {
     }
     getSeisms();
 });
+
+google.maps.event.addListener(infowindow, 'domready', function() {
+
+    // Reference to the DIV which receives the contents of the infowindow using jQuery
+    var iwOuter = $('.gm-style-iw');
+ 
+    /* The DIV we want to change is above the .gm-style-iw DIV.
+     * So, we use jQuery and create a iwBackground variable,
+     * and took advantage of the existing reference to .gm-style-iw for the previous DIV with .prev().
+     */
+    var iwBackground = iwOuter.prev();
+ 
+    // Remove the background shadow DIV
+    iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+ 
+    // Remove the white background DIV
+    iwBackground.children(':nth-child(4)').css({'display' : 'none'});
+    
+    // Changes the desired tail shadow color.
+    iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow': '#ff6d00 0px 1px 6px', 'z-index' : '1'});
+
+    var iwCloseBtn = iwOuter.next();
+
+    // Apply the desired effect to the close button
+    iwCloseBtn.css({
+    opacity: '1', // by default the close button has an opacity of 0.7
+    right: '25px', top: '10px', // button repositioning
+    border: '0px',
+    'border-radius': '13px',
+    'box-shadow': '0 0 5px #ff6d00'
+    });
+
+ });

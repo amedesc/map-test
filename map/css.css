@@ -88,7 +88,15 @@ header .container {
   font-family: 'Open Sans', sans-serif;
   color: #546E7A;
   margin: 0px 6.0625rem 2.5rem 2.55rem;
-  padding: 
+}
+
+.gm-style-iw{
+  background-color: #fff;
+  top: 15px !important;
+  left: 0 !important;
+  border-radius: 10px 0px 10px 10px;
+  padding: 10px;
+  border: 1px solid #ff6d00;
 }
 
 
