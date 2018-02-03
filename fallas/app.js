@@ -2,7 +2,7 @@ var map;
 var markers=[];
 var urlDis = "https://raw.githubusercontent.com/cluis11/pruebas/master/discontinuas.json";
 var urlCon = "https://raw.githubusercontent.com/cluis11/pruebas/master/continuas.json";
-var url="https://raw.githubusercontent.com/amedesc/map-test/master/mapa_fallas/falla.json";
+var url="https://raw.githubusercontent.com/amedesc/map-test/master/fallas/falla.json";
 var icon = "ic_circle.png"
 var color="#ff6d00", size=1.9;
 var nameX;
