@@ -6,7 +6,7 @@ var url="https://raw.githubusercontent.com/amedesc/map-test/master/mapa_fallas/f
 var icon = "ic_circle.png"
 var color="#ff6d00", size=1.9;
 var nameX;
-var consulta="La LuchaP";
+var consulta="";
 
 function initMap(){
 	map = new google.maps.Map(document.getElementById('map'), {
@@ -261,7 +261,7 @@ function addMarker(){
         map: map,
         position: new google.maps.LatLng(9.8637285975727, -83.974196586968),//agua caliente
         icon: {
-            url: '../mapa_fallas/ic_label.svg',
+            url: '../fallas/ic_label.svg',
         }
     });
 
@@ -269,7 +269,7 @@ function addMarker(){
         map: map,
         position: new google.maps.LatLng(10.065834534918, -84.237673064005),//alajuela
         icon: {
-            url: '../mapa_fallas/ic_label.svg',
+            url: '../fallas/ic_label.svg',
         }
     });
 
@@ -277,7 +277,7 @@ function addMarker(){
         map: map,
         position: new google.maps.LatLng(10.098998016865, -83.84868906873),//alto grande
         icon: {
-            url: '../mapa_fallas/ic_label.svg',
+            url: '../fallas/ic_label.svg',
         }
     });
 
@@ -285,7 +285,7 @@ function addMarker(){
         map: map,
         position: new google.maps.LatLng(   8.7857500680123, -82.830702597457),//alturas
         icon: {
-            url: '../mapa_fallas/ic_label.svg',
+            url: '../fallas/ic_label.svg',
         }
     });
 
@@ -293,7 +293,7 @@ function addMarker(){
         map: map,
         position: new google.maps.LatLng(9.9125789018347, -83.999934919321),//cipreses
         icon: {
-            url: '../mapa_fallas/ic_label.svg',
+            url: '../fallas/ic_label.svg',
         }
     });
 
@@ -301,7 +301,7 @@ function addMarker(){
         map: map,
         position: new google.maps.LatLng(9.795481263913, -84.046480070029),//frailes
         icon: {
-            url: '../mapa_fallas/ic_label.svg',
+            url: '../fallas/ic_label.svg',
         }
     });
 
@@ -309,7 +309,7 @@ function addMarker(){
         map: map,
         position: new google.maps.LatLng(9.8130440436941, -83.637519603721),//turrialba
         icon: {
-            url: '../mapa_fallas/ic_label.svg',
+            url: '../fallas/ic_label.svg',
         }
     });
 
@@ -317,7 +317,7 @@ function addMarker(){
         map: map,
         position: new google.maps.LatLng(10.209106038905, -84.399508834394),//zarcero
         icon: {
-            url: '../mapa_fallas/ic_label.svg',
+            url: '../fallas/ic_label.svg',
         }
     });
 
@@ -325,7 +325,7 @@ function addMarker(){
         map: map,
         position: new google.maps.LatLng(8.926609594636, -82.762861289701),//la lucha
         icon: {
-            url: '../mapa_fallas/ic_label.svg',
+            url: '../fallas/ic_label.svg',
         }
     });
 
@@ -334,7 +334,7 @@ function addMarker(){
         map: map,
         position: new google.maps.LatLng(10.452754931614, -84.700046850537),//danta
         icon: {
-            url: '../mapa_fallas/ic_label.svg',
+            url: '../fallas/ic_label.svg',
         }
     });
 
@@ -342,7 +342,7 @@ function addMarker(){
         map: map,
         position: new google.maps.LatLng(10.41244215182, -84.449246395503),//florencia
         icon: {
-            url: '../mapa_fallas/ic_label.svg',
+            url: '../fallas/ic_label.svg',
         }
     });
 
@@ -350,7 +350,7 @@ function addMarker(){
         map: map,
         position: new google.maps.LatLng(10.293119248225, -84.356858173726),//porvenir
         icon: {
-            url: '../mapa_fallas/ic_label.svg',
+            url: '../fallas/ic_label.svg',
         }
     });
 
