@@ -1,0 +1,88 @@
+{
+    "Volcanes":[
+        {
+            "name":"Orosi",
+            "location":{"lat":10.9788148591123, "lng":-85.4797004627446}
+        },
+        {
+            "name":"Chato",
+            "location":{"lat":10.9410974166236, "lng":-85.3752232245238}
+        },
+        {
+            "name":"Rincón de la Vieja",
+            "location":{"lat":10.822707507585, "lng":-85.3356752770823}
+        },
+        {
+            "name":"Miravalles",
+            "location":{"lat":10.7469339650569, "lng":-85.1475956466478}
+        },
+        {
+            "name":"Tenorio",
+            "location":{"lat":10.6813945299494, "lng":-85.0202223344072}
+        },
+        {
+            "name":"Chopo",
+            "location":{"lat":10.4787562964237, "lng":-85.0623821848793}
+        },
+        {
+            "name":"Arenal",
+            "location":{"lat":10.4620840291817, "lng":-84.7002395642709}
+        },
+        {
+            "name":"Chato",
+            "location":{"lat":10.4419948133238, "lng":-84.687836658117}
+        },
+        {
+            "name":"Platanar",
+            "location":{"lat":10.2968076373501, "lng":-84.362984336657}
+        },
+        {
+            "name":"Porvenir",
+            "location":{"lat":10.2696597563123, "lng":-84.3595298934504}
+        },
+        {
+            "name":"Laguna Río Cuarto",
+            "location":{"lat":10.3564238935569, "lng":-84.216040851221}
+        },
+        {
+            "name":"Congo",
+            "location":{"lat":10.2546256714124, "lng":-84.2270813380555}
+        },
+        {
+            "name":"Poás",
+            "location":{"lat":10.1870668319264, "lng":-84.226303224243}
+        },
+        {
+            "name":"Barva",
+            "location":{"lat":10.1312418980482, "lng":-84.1026790556968}
+        },
+        {
+            "name":"Cacho Negro",
+            "location":{"lat":10.1991219132516, "lng":-84.0481558171196}
+        },
+        {
+            "name":"Irazú",
+            "location":{"lat":9.98075830201104, "lng":-83.8482327238042}
+        },
+        {
+            "name":"Turrialba",
+            "location":{"lat":10.0173955052383, "lng":-83.7565106766633}
+        },
+        {
+            "name":"Tortugero",
+            "location":{"lat":10.5841790812787, "lng":-83.526547557643}
+        },
+        {
+            "name":"Laguna Hule",
+            "location":{"lat":10.297220320344, "lng":-84.2146035392868}
+        },
+        {
+            "name":"Cerro Pelado",
+            "location":{"lat":10.3678029143837, "lng":-85.0187537842583}
+        },
+        {
+            "name":"Conos de Agua Zarcas",
+            "location":{"lat":10.4391255499373, "lng":-84.3285379891743}
+        }
+    ]
+}
