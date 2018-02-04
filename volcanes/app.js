@@ -1,4 +1,6 @@
 var map;
+var url="https://raw.githubusercontent.com/amedesc/map-test/master/volcanes/volcanes.json";
+var marcador='../volcanes/ic_volcano_label.svg'
 
 function initMap(){
 	map = new google.maps.Map(document.getElementById('map'), {
@@ -148,11 +150,27 @@ function initMap(){
     });
 }
 
+function addVolcanos(volc){
+    var marker = new google.maps.Marker({
+        map: map,
+        position: new google.maps.LatLng(volc.location),
+        title: volc.name,
+        icon: marcador
+    });
+}
 
-
+function readJson(){
+    $.getJSON(url, function(doc) {
+        var volcanes = doc.volcanes;
+        fallas.forEach(function(volc, index, arr) {
+          addVolcanos(volc);
+      });
+    });
+}
 
 google.maps.event.addDomListener(window, 'load', function() {
     $('.button-collapse').sideNav({ menuWidth: 400 });
 
     initMap();
+    readJson();
 });
