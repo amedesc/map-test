@@ -1,5 +1,5 @@
 var map;
-var url="https://raw.githubusercontent.com/amedesc/map-test/master/volcanes/volcanes.json";
+var url="https://raw.githubusercontent.com/amedesc/map-test/master/volcanes/volc.json";
 var marcador='../volcanes/ic_volcano_label.svg'
 
 function initMap(){
@@ -161,8 +161,8 @@ function addVolcanos(volc){
 
 function readJson(){
     $.getJSON(url, function(doc) {
-        var volcanes = doc.volcanes;
-        fallas.forEach(function(volc, index, arr) {
+        var volcanes = doc.Volcanes;
+        volcanes.forEach(function(volc, index, arr) {
           addVolcanos(volc);
       });
     });
