@@ -271,7 +271,7 @@ google.maps.event.addDomListener(window, 'load', function() {
                     return function() {
                         infowindow.setContent(content);
                         infowindow.setOptions({
-                            maxWidth: 300
+                            maxWidth: 400
                         });
                         infowindow.open(map, marker);
                     }
