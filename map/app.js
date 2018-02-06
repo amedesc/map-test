@@ -251,27 +251,28 @@ google.maps.event.addDomListener(window, 'load', function() {
                    	
                 });
                }
-                var content = [
-                    '<b class="fecha_hora_infoWindow">Fecha y hora local: </b> <span class="fecha_hora_infoWindow">' + seism.localDateTime + '</span>',
-                    '<b class="fecha_hora_infoWindow">Magnitud: </b> <span class="fecha_hora_infoWindow">' + seism.magnitude + ' Mw' + '</span>',
-                    '<b class="fecha_hora_infoWindow">Ubicaci&oacute;n: </b> <span class="fecha_hora_infoWindow">' + seism.local + '</span>',
-                    '<b class="fecha_hora_infoWindow">Profundidad :</b> <span class="fecha_hora_infoWindow">' + seism.depth + ' km' + '</span>',
+
+               var content = '<div id="iw-container">' +
+                    '<b class="fecha_hora_infoWindow">Fecha y hora local: </b><span class="fecha_hora_infoWindow">' + seism.localDateTime + '</span></br>'+
+                    '<b class="fecha_hora_infoWindow">Magnitud: </b><span class="fecha_hora_infoWindow">' + seism.magnitude + ' Mw</span></br>'+
+                    '<b class="fecha_hora_infoWindow">Ubicaci&oacute;n: </b> <span class="fecha_hora_infoWindow">' + seism.local + '</span></br>'+
+                    '<b class="fecha_hora_infoWindow">Profundidad :</b> <span class="fecha_hora_infoWindow">' + seism.depth + ' km</span></br>'+
                     '<b class="fecha_hora_infoWindow">Latitud: </b> <span class="fecha_hora_infoWindow">' +
                     (
                         Math.abs(seism.lat) +
                         (seism.lat < 0 ? ' S' : ' N')
-                    ) + '</span>',
+                    ) + '</span></br>'+
                     '<b class="fecha_hora_infoWindow">Longitud: </b> <span class="fecha_hora_infoWindow">' +
                     (
                         Math.abs(seism.lon) +
                         (seism.lat < 0 ? ' E' : ' O')
-                    ) + '</span>'
-                ].join('<br />');
+                    ) + '</span></br>'+
+                  '</div>';
                 google.maps.event.addListener(marker, 'click', (function(marker) {
                     return function() {
                         infowindow.setContent(content);
                         infowindow.setOptions({
-                            maxWidth: 400
+                            maxWidth: 300
                         });
                         infowindow.open(map, marker);
                     }
@@ -363,8 +364,8 @@ google.maps.event.addListener(infowindow, 'domready', function() {
     // Apply the desired effect to the close button
     iwCloseBtn.css({
         opacity: '1', // by default the close button has an opacity of 0.7
-        right: '7px', top: '20px', // button repositioning
-        border: '0px',
+        right: '50px', top: '23px', // button repositioning
+        border: '0px'
         });
     
 

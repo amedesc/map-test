@@ -96,9 +96,13 @@ header .container {
   left: 0 !important;
   border-radius: 10px 10px 10px 10px;
   padding: 10px;
-  min-width: 280px;
+  border: 1px #686868;
+  width: 280px !important;
 }
 
+#iw-container{
+  width: 270px !important;
+}
 
 #circle {
     height:23px;
@@ -250,6 +254,14 @@ button.filter.active:hover{
     font-size: 9px;
   }
 
+  .gm-style-iw{
+    width: 230px !important;
+  }
+  
+  #iw-container{
+    width: 220px !important;
+  }
+
   #col1{
     display: inline-block;
     width: 9rem;
@@ -272,6 +284,13 @@ button.filter.active:hover{
     height: 100%;
   }
   
+  .gm-style-iw{
+    width: 250px !important;
+  }
+  
+  #iw-container{
+    width: 240px !important;
+  }
 
   #nav-mobile {
   width: 80% !important;
