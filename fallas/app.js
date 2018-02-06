@@ -18,6 +18,7 @@ function initMap(){
         zoomControlOptions: {
               position: google.maps.ControlPosition.TOP_LEFT
           },
+          clickableIcons: false,
           styles: [
             {
                 "featureType": "administrative.country",

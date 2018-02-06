@@ -1,15 +1,21 @@
 var map;
 var url="https://raw.githubusercontent.com/amedesc/map-test/master/volcanes/volc.json";
-var marcador='../volcanes/ic_volcano_label.svg'
+var marcador1='../volcanes/ic_volcano_label_1.svg';
+var marcador2='../volcanes/ic_volcano_label_2.svg';
+var marcador3='../volcanes/ic_volcano_label_3.svg';
+
 
 function initMap(){
 	map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 8,
-        center: new google.maps.LatLng(9.4, -84),
+        maxZoom:12,
+        minZoom:7,
+        zoom: 9,
+        center: new google.maps.LatLng(10, -84),// con dimensiones de 847 x 600
         streetViewControl: false,
         zoomControlOptions: {
               position: google.maps.ControlPosition.TOP_LEFT
           },
+        clickableIcons: false,
         styles: [
             {
                 "featureType": "administrative.country",
@@ -151,11 +157,21 @@ function initMap(){
 }
 
 function addVolcanos(volc){
+    var icono;
+    if (volc.name=='Irazú' || volc.name=='Orosi' || volc.name=='Turrialba' || volc.name=='Chato' || volc.name=='Arenal' || volc.name=='Platanar'){
+        icono=marcador1;
+    }
+    else if (volc.name=='Cerro Pelado' || volc.name=='Miravalles' || volc.name=='Tenorio' || volc.name=='Chopo' || volc.name=='Porvenir'){
+        icono=marcador2;
+    }
+    else{
+        icono=marcador3
+    }
     var marker = new google.maps.Marker({
         map: map,
         position: new google.maps.LatLng(volc.location),
         title: volc.name,
-        icon: marcador
+        icon: icono
     });
 }
 
