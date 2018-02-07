@@ -72,6 +72,24 @@ function initMap(){
                 ]
             },
             {
+                "featureType": "landscape.natural",
+                "elementType": "labels",
+                "stylers": [
+                    {
+                        "visibility": "off"
+                    }
+                ]
+            },
+            {
+                "featureType": "landscape.natural.landcover",
+                "elementType": "all",
+                "stylers": [
+                    {
+                        "visibility": "on"
+                    }
+                ]
+            },
+            {
                 "featureType": "landscape.natural.terrain",
                 "elementType": "geometry.fill",
                 "stylers": [
@@ -86,6 +104,15 @@ function initMap(){
                     },
                     {
                         "hue": "#ff0000"
+                    }
+                ]
+            },
+            {
+                "featureType": "landscape.natural.terrain",
+                "elementType": "labels",
+                "stylers": [
+                    {
+                        "visibility": "on"
                     }
                 ]
             },
@@ -113,6 +140,33 @@ function initMap(){
                 "stylers": [
                     {
                         "visibility": "off"
+                    }
+                ]
+            },
+            {
+                "featureType": "poi.attraction",
+                "elementType": "all",
+                "stylers": [
+                    {
+                        "visibility": "on"
+                    }
+                ]
+            },
+            {
+                "featureType": "poi.park",
+                "elementType": "all",
+                "stylers": [
+                    {
+                        "visibility": "on"
+                    }
+                ]
+            },
+            {
+                "featureType": "poi.place_of_worship",
+                "elementType": "all",
+                "stylers": [
+                    {
+                        "visibility": "on"
                     }
                 ]
             },
