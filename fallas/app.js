@@ -1,5 +1,5 @@
 var map;
-var markers=[];
+var fallasLines=[];
 var urlDis = "https://raw.githubusercontent.com/cluis11/pruebas/master/discontinuas.json";
 var urlCon = "https://raw.githubusercontent.com/cluis11/pruebas/master/continuas.json";
 var url="https://raw.githubusercontent.com/amedesc/map-test/master/fallas/falla.json";
@@ -7,6 +7,8 @@ var icon = "ic_circle.png"
 var color="#ff6d00", size=1.9;
 var nameX;
 var consulta="";
+
+var fallaObj = {name:"", line:null};
 
 function initMap(){
 	map = new google.maps.Map(document.getElementById('map'), {
@@ -195,20 +197,6 @@ function addFallasDis(discontinuas){
             strokeOpacity: 1,
             scale: size
         };
-        if (nameX===consulta){
-            var line = new google.maps.Polyline({
-                path: discontinuas,
-                strokeOpacity: 0,
-                strokeColor: '#ff0000',
-                    icons: [{
-                      icon: lineaDiscontinua,
-                      offset: '0',
-                      repeat: '10px'
-                    }],
-                    map: map
-                  });
-        }
-        else{
             var line = new google.maps.Polyline({
                 path: discontinuas,
                 strokeOpacity: 0,
@@ -220,7 +208,6 @@ function addFallasDis(discontinuas){
                     }],
                     map: map
                   });
-        }
         }
 }
 
@@ -232,16 +219,6 @@ function addFallasCon(continuas){
     }
     else{
         var fallaLine;
-        if (nameX===consulta){
-            fallaLine = new google.maps.Polyline({
-                path: continuas,
-                geodesic: true,
-                strokeColor:'#ff0000',
-                strokeOpacity: 1.0,
-                strokeWeight: 4
-            });
-        }
-        else{
             fallaLine = new google.maps.Polyline({
                 path: continuas,
                 geodesic: true,
@@ -249,18 +226,25 @@ function addFallasCon(continuas){
                 strokeOpacity: 1.0,
                 strokeWeight: size
             });
-        }
         fallaLine.setMap(map);
+        fallaObj.line=fallaLine;
+        fallaObj.name=nameX;
+        fallasLines.push(fallaObj);
     }
 }
-var marker;
 
+
+var marker;
+var markerX
 
 
 function addMarker(){
+
+
     marker = new google.maps.Marker({
         map: map,
         position: new google.maps.LatLng(9.8637285975727, -83.974196586968),//agua caliente
+        title:'Agua Caliente',
         icon: {
             url: '../fallas/ic_label.svg',
         }
@@ -277,6 +261,7 @@ function addMarker(){
     marker = new google.maps.Marker({
         map: map,
         position: new google.maps.LatLng(10.098998016865, -83.84868906873),//alto grande
+        title: 'hol',
         icon: {
             url: '../fallas/ic_label.svg',
         }
@@ -285,6 +270,7 @@ function addMarker(){
     marker = new google.maps.Marker({
         map: map,
         position: new google.maps.LatLng(   8.7857500680123, -82.830702597457),//alturas
+        title: 'hol',
         icon: {
             url: '../fallas/ic_label.svg',
         }
@@ -293,6 +279,7 @@ function addMarker(){
     marker = new google.maps.Marker({
         map: map,
         position: new google.maps.LatLng(9.9125789018347, -83.999934919321),//cipreses
+        title: 'hol',
         icon: {
             url: '../fallas/ic_label.svg',
         }
@@ -355,6 +342,31 @@ function addMarker(){
         }
     });
 
+    markerX = new google.maps.Marker({
+        map: map,
+        title: 'Zumbona',
+        position: new google.maps.LatLng(8.7784985049083, -83.024766608146),//zumbona
+        icon: {
+            url: '../fallas/ic_label.svg',
+        }
+    });
+
+}
+
+function cambiarColor(){
+    /*var delayInMilliseconds = 51000; //1 second
+
+    setTimeout(function() {
+        fallasLines.forEach(function(falla, index, arr) {
+            if (falla.name=='Agua Caliente'){
+                alert('vamo bien');
+            }
+      });
+    }, delayInMilliseconds);*/
+    alert(fallasLines.length);
+    fallasLines.forEach(function(falla, index, arr) {
+        alert(falla.name);
+  });
 }
 
 google.maps.event.addDomListener(window, 'load', function() {
@@ -363,5 +375,35 @@ google.maps.event.addDomListener(window, 'load', function() {
     initMap();
     readJson();
     addMarker();
+
+    google.maps.event.addDomListener(markerX, 'mouseover', function() {
+        fallasLines.forEach(function(falla, index, arr) {
+            if (falla.name=='Zumbona'){
+                falla.line.setOptions({strokeColor: 'blue'});
+            }
+        });
+    });
+    google.maps.event.addDomListener(markerX, 'mouseout', function() {
+        fallasLines.forEach(function(falla, index, arr) {
+            if (falla.name=='Zumbona'){
+                falla.line.setOptions({strokeColor: color});
+            }
+        });
+    });
+    
 });
 
+/*google.maps.event.addDomListener(window, 'onload', function() {
+    google.maps.event.addDomListener(markerX, 'mouseover', function() {
+        fallasLines.forEach(function(falla, index, arr) {
+            alert(falla.name);
+            if (falla.name=='Agua Caliente'){
+                alert('eso');
+                falla.line.setOptions({strokeColor: 'blue'});
+            }
+        });
+    });
+    google.maps.event.addDomListener(markerX, 'mouseout', function() {
+        
+    });
+});*/
