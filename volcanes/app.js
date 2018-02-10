@@ -10,7 +10,7 @@ function initMap(){
         maxZoom:12,
         minZoom:7,
         zoom: 9,
-        center: new google.maps.LatLng(10.5, -85),// con dimensiones de 847 x 600
+        center: new google.maps.LatLng(10.5, -84.5),// con dimensiones de 847 x 600
         streetViewControl: false,
         zoomControlOptions: {
               position: google.maps.ControlPosition.TOP_LEFT
