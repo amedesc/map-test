@@ -183,7 +183,7 @@ function readJson(){
 function addFallasDis(discontinuas, name){
     if (discontinuas[0].constructor === Array){
         discontinuas.forEach(function(element, index, arr) {    
-            addFallasDis(element);
+            addFallasDis(element,name);
         });
     }
     else{
@@ -203,6 +203,10 @@ function addFallasDis(discontinuas, name){
                     }],
                     map: map
                   });
+                  fallasLines.push({
+                    line: line,
+                    name: name
+                })
         }
 }
 
@@ -241,17 +245,21 @@ function addMarker(marcador, name){
 
     marker.addListener('mouseover', function() {
         fallasLines.forEach(function(falla, index, arr) {
-            if (falla.name==='Zumbona'){
+            if (falla.name==marker.getTitle()){
                 falla.line.setOptions({strokeColor: 'blue'});
             }
         });
     });
     marker.addListener('mouseout', function() {
         fallasLines.forEach(function(falla, index, arr) {
-            if (falla.name==='Zumbona'){
+            if (falla.name==marker.getTitle()){
                 falla.line.setOptions({strokeColor: color});
             }
         });
+    });
+
+    marker.addListener('click', function() {
+        window.open('http://desarrollo.rsn.ucr.ac.cr/actividad-sismica/fallas-activas', '_blank');
     });
     
 }
@@ -282,18 +290,6 @@ google.maps.event.addDomListener(window, 'load', function() {
 
     initMap();
     readJson();
-        /*google.maps.event.addDomListener(marker, 'mouseover', function() {
-            fallasLines.forEach(function(falla, index, arr) {
-                
-                if (falla.name=='Agua Caliente' || falla.name=='Zumbona')   {
-                    falla.line.setOptions({strokeColor: 'blue'});
-                }        
-            });
-        });
-            google.maps.event.addDomListener(marker, 'mouseout', function() {
-                regresarColor()
-            });*/
-        
 });
 
 
