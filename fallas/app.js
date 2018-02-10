@@ -1,6 +1,6 @@
 var map;
 var url="https://raw.githubusercontent.com/amedesc/map-test/master/fallas/falla.json";
-var fallasLines=[], marcadores=[], color="#ff6d00", size=1.9;
+var fallasLines=[], marcadores=[], color1="#ff6d00", color2='#0087E0', size=1.9;
 function initMap(){
 	map = new google.maps.Map(document.getElementById('map'), {
         maxZoom:12,
@@ -195,7 +195,7 @@ function addFallasDis(discontinuas, name){
             var line = new google.maps.Polyline({
                 path: discontinuas,
                 strokeOpacity: 0,
-                strokeColor: color,
+                strokeColor: color1,
                     icons: [{
                       icon: lineaDiscontinua,
                       offset: '0',
@@ -221,7 +221,7 @@ function addFallasCon(continuas, name){
             fallaLine = new google.maps.Polyline({
                 path: continuas,
                 geodesic: true,
-                strokeColor: color,
+                strokeColor: color1,
                 strokeOpacity: 1.0,
                 strokeWeight: size
             });
@@ -246,14 +246,14 @@ function addMarker(marcador, name){
     marker.addListener('mouseover', function() {
         fallasLines.forEach(function(falla, index, arr) {
             if (falla.name==marker.getTitle()){
-                falla.line.setOptions({strokeColor: 'blue'});
+                falla.line.setOptions({strokeColor: color2});
             }
         });
     });
     marker.addListener('mouseout', function() {
         fallasLines.forEach(function(falla, index, arr) {
             if (falla.name==marker.getTitle()){
-                falla.line.setOptions({strokeColor: color});
+                falla.line.setOptions({strokeColor: color1});
             }
         });
     });
@@ -262,25 +262,6 @@ function addMarker(marcador, name){
         window.open('http://desarrollo.rsn.ucr.ac.cr/actividad-sismica/fallas-activas', '_blank');
     });
     
-}
-
-
-function cambiarColor(){
-    fallasLines.forEach(function(falla, index, arr) {
-        alert(falla.name);
-
-        if (falla.name=='Agua Caliente' || falla.name=='Zumbona')   {
-            falla.line.setOptions({strokeColor: 'blue'});
-        }
-    });
-}
-
-function regresarColor(){
-    fallasLines.forEach(function(falla, index, arr) {
-        if (falla.name=='Agua Caliente' || falla.name=='Zumbona')   {
-            falla.line.setOptions({strokeColor: color});
-        }
-    });
 }
 
 
