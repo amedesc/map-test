@@ -1,8 +1,8 @@
 var map;
 var url="https://raw.githubusercontent.com/amedesc/map-test/master/volcanes/volc.json";
-var marcador1='../volcanes/ic_volcano_label_1.svg';
-var marcador2='../volcanes/ic_volcano_label_2.svg';
-var marcador3='../volcanes/ic_volcano_label_3.svg';
+var marcador1='../volcanes/ic_volcano_1.svg';
+var marcador2='../volcanes/ic_volcano_2.svg';
+var marcador3='../volcanes/ic_volcano_3.svg';
 
 
 function initMap(){
@@ -10,7 +10,7 @@ function initMap(){
         maxZoom:12,
         minZoom:7,
         zoom: 9,
-        center: new google.maps.LatLng(10, -84),// con dimensiones de 847 x 600
+        center: new google.maps.LatLng(10.5, -85),// con dimensiones de 847 x 600
         streetViewControl: false,
         zoomControlOptions: {
               position: google.maps.ControlPosition.TOP_LEFT
