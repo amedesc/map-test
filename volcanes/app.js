@@ -211,20 +211,10 @@ function initMap(){
 }
 
 function addVolcanos(volc){
-    var icono;
-    if (volc.name=='Irazú' || volc.name=='Orosi' || volc.name=='Turrialba' || volc.name=='Chato' || volc.name=='Arenal' || volc.name=='Platanar'){
-        icono=marcador1;
-    }
-    else if (volc.name=='Cerro Pelado' || volc.name=='Miravalles' || volc.name=='Tenorio' || volc.name=='Chopo' || volc.name=='Porvenir'){
-        icono=marcador2;
-    }
-    else{
-        icono=marcador3
-    }
+    var icono='../volcanes/icons/'+volc.name+'.svg';
     var marker = new google.maps.Marker({
         map: map,
         position: new google.maps.LatLng(volc.location),
-        title: volc.name,
         icon: icono
     });
 }
