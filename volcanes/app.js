@@ -217,6 +217,10 @@ function addVolcanos(volc){
         position: new google.maps.LatLng(volc.location),
         icon: icono
     });
+
+    marker.addListener('click', function() {
+        window.open('http://'+volc.link, '_blank');
+    });
 }
 
 function readJson(){
