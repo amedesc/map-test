@@ -80,7 +80,7 @@
             "link":"rsn.ucr.ac.cr/actividad-volcanica/volcanes-costa-rica/32-turrialba"
         },
         {
-            "name":"tortugero",
+            "name":"tortuguero",
             "location":{"lat":10.5841790812787, "lng":-83.526547557643},
             "link":"rsn.ucr.ac.cr/actividad-volcanica/volcanes-costa-rica/30-tortuguero"
         },
@@ -95,7 +95,7 @@
             "link":"rsn.ucr.ac.cr/actividad-volcanica/volcanes-costa-rica/78-pelado"
         },
         {
-            "name":"agua_zarcas ",
+            "name":"agua_zarcas",
             "location":{"lat":10.4391255499373, "lng":-84.3285379891743},
             "link":"rsn.ucr.ac.cr/actividad-volcanica/volcanes-costa-rica/16-aguas-zarcas"
         }
