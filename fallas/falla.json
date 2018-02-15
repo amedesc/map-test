@@ -364,7 +364,7 @@
                 {"lng":-84.373845740962, "lat":10.265595088652},
                 {"lng":-84.372340513486, "lat":10.290968923258}
             ]},
-            "marcador":{"lng":-84.373845740962, "lat":10.265595088652},
+            "marcador":{"lng":-84.372340513486, "lat":10.290968923258},
             "link":"rsn.ucr.ac.cr/actividad-sismica/fallas-activas/4437-falla-congo",
             "icono":"congo"
         },
@@ -554,7 +554,7 @@
                 {"lng":-84.357831101577, "lat":10.427008325028},
                 {"lng":-84.35180371956, "lat":10.416962688333}
             ]},
-            "marcador":{"lat":10.41244215182, "lng":-84.449246395503},
+            "marcador":{"lng":-84.512031624848, "lat":10.327556521746},
             "link":"rsn.ucr.ac.cr/actividad-sismica/fallas-activas/4433-falla-florencia-palmira",
             "icono":"florencia_palmira"
         },
@@ -1193,7 +1193,7 @@
                 {"lng":-84.768275881362, "lat":10.299092492116},
                 {"lng":-84.711744459361, "lat":10.330760557218}
             ]},
-            "marcador":{"lng":-84.768275881362, "lat":10.299092492116},
+            "marcador":{"lng":-84.711744459361, "lat":10.330760557218},
             "link":"rsn.ucr.ac.cr/actividad-sismica/fallas-activas/4570-falla-penas-blancas",
             "icono":"peñas_blancas"
         },
@@ -1232,7 +1232,7 @@
                 {"lng":-84.353632686276, "lat":10.304085905555},
                 {"lng":-84.358578433699, "lat":10.319353212818}
             ]},
-            "marcador":{"lat":10.293119248225, "lng":-84.356858173726},
+            "marcador":{"lng":-84.358578433699, "lat":10.319353212818}
             "link":"rsn.ucr.ac.cr/actividad-sismica/fallas-activas/4753-falla-porvenir",
             "icono":"porvenir"
         },

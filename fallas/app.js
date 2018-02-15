@@ -172,8 +172,11 @@ function readJson(){
         var fallas = doc.fallas;
         fallas.forEach(function(falla, index, arr) {
           drawLines(falla.location, falla.name);
-          if (falla.hasOwnProperty('marcador')){
-              addMarker(falla.marcador, falla.name);
+          if (!falla.hasOwnProperty('link') && falla.hasOwnProperty('marcador')){
+              addMarker(falla.marcador, falla.name, falla.icono);
+          }
+          else if(falla.hasOwnProperty('link') && falla.hasOwnProperty('marcador')){
+            addMarker(falla.marcador, falla.name, falla.icono, falla.link);
           }
       });
       
@@ -233,13 +236,40 @@ function addFallasCon(continuas, name){
         
     }
 }
-function addMarker(marcador, name){
+
+function addMarker(marcador, name, icono){
     var marker = new google.maps.Marker({
         map: map,
         position: new google.maps.LatLng(marcador),//agua caliente
         title: name,
         icon: {
-            url: '../fallas/ic_falla_1.svg',
+            url: '../fallas/icons/'+icono+".svg",
+        }
+    });
+
+    marker.addListener('mouseover', function() {
+        fallasLines.forEach(function(falla, index, arr) {
+            if (falla.name==marker.getTitle()){
+                falla.line.setOptions({strokeColor: color2});
+            }
+        });
+    });
+    marker.addListener('mouseout', function() {
+        fallasLines.forEach(function(falla, index, arr) {
+            if (falla.name==marker.getTitle()){
+                falla.line.setOptions({strokeColor: color1});
+            }
+        });
+    }); 
+}
+
+function addMarker(marcador, name, icono, link){
+    var marker = new google.maps.Marker({
+        map: map,
+        position: new google.maps.LatLng(marcador),//agua caliente
+        title: name,
+        icon: {
+            url: '../fallas/icons/'+icono+".svg",
         }
     });
 
@@ -259,7 +289,7 @@ function addMarker(marcador, name){
     });
 
     marker.addListener('click', function() {
-        window.open('http://desarrollo.rsn.ucr.ac.cr/actividad-sismica/fallas-activas', '_blank');
+        window.open('http://'+link, '_blank');
     });
     
 }
