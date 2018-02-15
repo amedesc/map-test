@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="65px" height="27px" viewBox="0 0 65 27" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>ayil</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M17.8208049,6 C16.6655751,7.89393294 16,10.1192398 16,12.5 C16,15.3140148 16.9298621,17.9108487 18.4990845,20 L7,20 C3.13400675,20 4.73447626e-16,16.8659932 0,13 C-4.73447626e-16,9.13400675 3.13400675,6 7,6 L17.8208049,6 Z M39.1791951,6 L50,6 C53.8659932,6 57,9.13400675 57,13 C57,16.8659932 53.8659932,20 50,20 L38.5009155,20 C40.0701379,17.9108487 41,15.3140148 41,12.5 C41,10.1192398 40.3344249,7.89393294 39.1791951,6 Z" id="path-1"></path>
+        <filter x="-11.4%" y="-39.3%" width="122.8%" height="192.9%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Volcanes-fallas" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ayil" transform="translate(4.000000, 1.000000)">
+            <g id="ic_volcano_label-copy-19">
+                <g id="Group-Copy-3" transform="translate(16.000000, 0.000000)">
+                    <g id="Group-26-Copy-4"></g>
+                </g>
+                <circle id="Oval-2-Copy-5" stroke="#FFFFFF" stroke-width="0.5" fill="#FF6D00" cx="28.5" cy="12.5" r="12.5"></circle>
+                <g id="Combined-Shape">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <use fill="#263238" fill-rule="evenodd" xlink:href="#path-1"></use>
+                </g>
+                <rect id="Rectangle-2-Copy-4" fill="#263238" x="0" y="6" width="57" height="14" rx="7"></rect>
+            </g>
+            <path d="M24.1152344,16 L23.7011719,14.640625 L21.6191406,14.640625 L21.2050781,16 L19.9003906,16 L21.9160156,10.265625 L23.3964844,10.265625 L25.4199219,16 L24.1152344,16 Z M23.4121094,13.625 C23.029295,12.393223 22.8138023,11.6966154 22.765625,11.5351562 C22.7174477,11.3736971 22.6829428,11.2460942 22.6621094,11.1523438 C22.5761714,11.4856787 22.3300802,12.3098893 21.9238281,13.625 L23.4121094,13.625 Z M27.4355469,12.640625 L28.6269531,10.2890625 L29.9316406,10.2890625 L28.0371094,13.7773438 L28.0371094,16 L26.8339844,16 L26.8339844,13.8164062 L24.9394531,10.2890625 L26.2519531,10.2890625 L27.4355469,12.640625 Z M30.6503906,16 L30.6503906,10.2890625 L31.8613281,10.2890625 L31.8613281,16 L30.6503906,16 Z M33.2988281,16 L33.2988281,10.2890625 L34.5097656,10.2890625 L34.5097656,15 L36.8261719,15 L36.8261719,16 L33.2988281,16 Z" fill="#FFFFFF"></path>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="88px" height="27px" viewBox="0 0 88 27" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>tivives_bajamar</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M30.6751405,6 C29.6123291,7.89393294 29,10.1192398 29,12.5 C29,15.3140148 29.8554731,17.9108487 31.2991578,20 L9,20 C5.13400675,20 2,16.8659932 2,13 C2,9.13400675 5.13400675,6 9,6 L30.6751405,6 Z M50.3248595,6 L72,6 C75.8659932,6 79,9.13400675 79,13 C79,16.8659932 75.8659932,20 72,20 L49.7008422,20 C51.1445269,17.9108487 52,15.3140148 52,12.5 C52,10.1192398 51.3876709,7.89393294 50.3248595,6 Z" id="path-1"></path>
+        <filter x="-8.4%" y="-39.3%" width="116.9%" height="192.9%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <rect id="path-3" x="0" y="6" width="80" height="14" rx="7"></rect>
+        <filter x="-8.1%" y="-39.3%" width="116.2%" height="192.9%" filterUnits="objectBoundingBox" id="filter-4">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Volcanes-fallas" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="tivives_bajamar" transform="translate(4.000000, 1.000000)">
+            <g id="ic_volcano_label-copy-18">
+                <g id="Group-Copy-3">
+                    <g id="Group-26-Copy-4" transform="translate(28.000000, 0.000000)" fill="#FF6D00" stroke="#FFFFFF" stroke-width="0.5">
+                        <circle id="Oval-2-Copy-5" cx="12.5" cy="12.5" r="12.5"></circle>
+                    </g>
+                    <g id="Combined-Shape">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                        <use fill="#263238" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    </g>
+                    <g id="Rectangle-2-Copy-4">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#path-3"></use>
+                        <use fill="#263238" fill-rule="evenodd" xlink:href="#path-3"></use>
+                    </g>
+                </g>
+                <text id="tivives-bajamar" font-family="OpenSans-Bold, Open Sans" font-size="8" font-weight="bold" fill="#FFFFFF">
+                    <tspan x="8.88867188" y="15">tivives-bajamar</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>
