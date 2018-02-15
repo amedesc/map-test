@@ -1232,7 +1232,7 @@
                 {"lng":-84.353632686276, "lat":10.304085905555},
                 {"lng":-84.358578433699, "lat":10.319353212818}
             ]},
-            "marcador":{"lng":-84.358578433699, "lat":10.319353212818}
+            "marcador":{"lng":-84.358578433699, "lat":10.319353212818},
             "link":"rsn.ucr.ac.cr/actividad-sismica/fallas-activas/4753-falla-porvenir",
             "icono":"porvenir"
         },
