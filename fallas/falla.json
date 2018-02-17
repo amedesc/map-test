@@ -528,7 +528,7 @@
                     {"lng":-83.760312192668, "lat":9.803210309776},
                     {"lng":-83.778795311288, "lat":9.8467483225253}
             ]},
-            "marcador":{"lng":-83.760312192668, "lat":9.803210309776},
+            "marcador":{"lng":-83.77, "lat":9.82},
             "link":"rsn.ucr.ac.cr/actividad-sismica/fallas-activas/3738-falla-duan",
             "icono":"duan"
         },
@@ -1697,7 +1697,7 @@
                 {"lng":-84.398718690117, "lat":9.7805234063566},
                 {"lng":-84.387368600535, "lat":9.7855678906155}
             ]]},
-            "marcador":{"lng":-84.397962017479, "lat":9.7704344378388},
+            "marcador":{"lng":-84.420914420857, "lat":9.7507609492291},
             "link":"rsn.ucr.ac.cr/actividad-sismica/fallas-activas/3061-falla-tulin",
             "icono":"tulin"
         },
