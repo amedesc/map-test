@@ -1193,7 +1193,7 @@
                 {"lng":-84.768275881362, "lat":10.299092492116},
                 {"lng":-84.711744459361, "lat":10.330760557218}
             ]},
-            "marcador":{"lng":-84.711744459361, "lat":10.330760557218},
+            "marcador":{"lng":-84.74, "lat":10.30},
             "link":"rsn.ucr.ac.cr/actividad-sismica/fallas-activas/4570-falla-penas-blancas",
             "icono":"peñas_blancas"
         },
