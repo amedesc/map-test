@@ -364,7 +364,7 @@
                 {"lng":-84.373845740962, "lat":10.265595088652},
                 {"lng":-84.372340513486, "lat":10.290968923258}
             ]},
-            "marcador":{"lng":-84.372340513486, "lat":10.290968923258},
+            "marcador":{"lng":-84.3730, "lat":10.275},
             "link":"rsn.ucr.ac.cr/actividad-sismica/fallas-activas/4437-falla-congo",
             "icono":"congo"
         },
@@ -1232,7 +1232,7 @@
                 {"lng":-84.353632686276, "lat":10.304085905555},
                 {"lng":-84.358578433699, "lat":10.319353212818}
             ]},
-            "marcador":{"lng":-84.358578433699, "lat":10.319353212818},
+            "marcador":{"lng":-84.358578433699, "lat":10.293119248225},
             "link":"rsn.ucr.ac.cr/actividad-sismica/fallas-activas/4753-falla-porvenir",
             "icono":"porvenir"
         },
