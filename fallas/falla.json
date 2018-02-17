@@ -832,7 +832,7 @@
                 {"lng":-82.888325161183, "lat":9.7892217443879},
                 {"lng":-82.95124807716,  "lat":9.7376362907488}
             ]},
-            "marcador":{"lng":-82.95124807716,  "lat":9.7376362907488},
+            "marcador":{"lng":-82.916,  "lat":9.76},
             "link":"rsn.ucr.ac.cr/actividad-sismica/fallas-activas/4985-falla-la-estrella",
             "icono":"la_estrella"
         },
@@ -1499,7 +1499,7 @@
                 {"lng":-82.608426857662, "lat":9.5050826423293},
                 {"lng":-82.514216446907, "lat":9.5716154182863}
             ]},
-            "marcador":{"lng":-82.514216446907, "lat":9.5716154182863},
+            "marcador":{"lng":-82.548, "lat":9.543},
             "link":"rsn.ucr.ac.cr/actividad-sismica/fallas-activas/5844-falla-sixaola",
             "icono":"sixaola"
         },
