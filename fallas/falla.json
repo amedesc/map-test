@@ -906,7 +906,7 @@
                 {"lng":-85.499687061211, "lat":10.671247362683},
                 {"lng":-85.49769180573, "lat":10.550035592188}
             ]},
-            "marcador":{"lng":-85.49769180573, "lat":10.550035592188},
+            "marcador":{"lng":-85.49769180573, "lat":10.60},
             "link":"rsn.ucr.ac.cr/actividad-sismica/fallas-activas/6542-falla-liberia",
             "icono":"liberia"
         },
