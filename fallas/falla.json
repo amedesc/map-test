@@ -143,7 +143,7 @@
             ]},
             "marcador":{"lng":-83.496401460009, "lat":9.6684102530421},
             "link":"rsn.ucr.ac.cr/actividad-sismica/fallas-activas/2588-falla-atirro",
-            "icono":"artillo"
+            "icono":"atirro"
         },
         {
             "name":"Barranca",
@@ -320,7 +320,7 @@
             ]},
             "marcador":{"lng":-85.211573262674, "lat":10.903449903129},
             "link":"rsn.ucr.ac.cr/actividad-sismica/fallas-activas/4463-sistema-de-falla-macho-cano-negro",
-            "icono":"macho_caño"
+            "icono":"macho_caño"
         },
         {
             "name":"Carbonera",
@@ -906,7 +906,7 @@
                 {"lng":-85.499687061211, "lat":10.671247362683},
                 {"lng":-85.49769180573, "lat":10.550035592188}
             ]},
-            "marcador":{"lng":-85.49769180573, "lat":10.550035592188},
+            "marcador":{"lng":-85.49769180573, "lat":10.60},
             "link":"rsn.ucr.ac.cr/actividad-sismica/fallas-activas/6542-falla-liberia",
             "icono":"liberia"
         },

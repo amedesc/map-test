@@ -30,7 +30,6 @@ header .container:first-child a {
   font-size: 32px;
   color: #0087e0;
   display: inline-block;
-  border-radius: 0;
   margin-left: 0;
 }
 header .container {
