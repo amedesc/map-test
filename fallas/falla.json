@@ -229,7 +229,7 @@
             ]},
             "marcador":{"lng":-84.859389197384, "lat":10.343917676112},
             "link":"rsn.ucr.ac.cr/actividad-sismica/fallas-activas/3364-falla-canas",
-            "icono":"cañas"
+            "icono":"canas"
         },
         {
             "name":"Candelaria",
@@ -921,7 +921,7 @@
             ]},
             "marcador":{"lng":-85.740062154409, "lat":10.248639786388},
             "link":"rsn.ucr.ac.cr/actividad-sismica/fallas-activas/5075-falla-limones-canas",
-            "icono":"limones_cañas"
+            "icono":"limones_canas"
         },
         {
             "name":"Longitudinal",
@@ -1068,7 +1068,7 @@
             ]},
             "marcador":{"lng":-85.588943629545, "lat":10.004126636879},
             "link":"rsn.ucr.ac.cr/actividad-sismica/fallas-activas/6076-falla-montana",
-            "icono":"montaña"
+            "icono":"montana"
         },
         {
             "name":"Navarro",
@@ -1188,14 +1188,14 @@
             "icono":"paquita"
         },
         {
-            "name":"Penas Blancas",
+            "name":"Peñas Blancas",
             "location":{"continuas":[
                 {"lng":-84.768275881362, "lat":10.299092492116},
                 {"lng":-84.711744459361, "lat":10.330760557218}
             ]},
             "marcador":{"lng":-84.74, "lat":10.3155},
             "link":"rsn.ucr.ac.cr/actividad-sismica/fallas-activas/4570-falla-penas-blancas",
-            "icono":"peñas_blancas"
+            "icono":"penas_blancas"
         },
         {
             "name":"Picagres",
