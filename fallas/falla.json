@@ -227,7 +227,7 @@
                 {"lng":-85.036683433583, "lat":10.451221106224},
                 {"lng":-85.051118689333, "lat":10.462299325753}
             ]},
-            "marcador":{"lng":-84.962196302603, "lat":10.415175510947},
+            "marcador":{"lng":-84.859389197384, "lat":10.343917676112},
             "link":"rsn.ucr.ac.cr/actividad-sismica/fallas-activas/3364-falla-canas",
             "icono":"cañas"
         },
@@ -364,7 +364,7 @@
                 {"lng":-84.373845740962, "lat":10.265595088652},
                 {"lng":-84.372340513486, "lat":10.290968923258}
             ]},
-            "marcador":{"lng":-84.372340513486, "lat":10.290968923258},
+            "marcador":{"lng":-84.3730, "lat":10.275},
             "link":"rsn.ucr.ac.cr/actividad-sismica/fallas-activas/4437-falla-congo",
             "icono":"congo"
         },
@@ -448,7 +448,7 @@
                     {"lng":-82.486982038763, "lat":9.6655814811693}
                 ]
             ]},
-            "marcador":{"lng":-83.015754004739, "lat":10.067365911347},
+            "marcador":{"lng":-82.764475664105, "lat":9.8858528333293},
             "link":"rsn.ucr.ac.cr/actividad-sismica/fallas-activas/2960-falla-costera-del-caribe",
             "icono":"costanera_caribe"
         },
@@ -528,7 +528,7 @@
                     {"lng":-83.760312192668, "lat":9.803210309776},
                     {"lng":-83.778795311288, "lat":9.8467483225253}
             ]},
-            "marcador":{"lng":-83.760312192668, "lat":9.803210309776},
+            "marcador":{"lng":-83.77, "lat":9.82},
             "link":"rsn.ucr.ac.cr/actividad-sismica/fallas-activas/3738-falla-duan",
             "icono":"duan"
         },
@@ -554,7 +554,7 @@
                 {"lng":-84.357831101577, "lat":10.427008325028},
                 {"lng":-84.35180371956, "lat":10.416962688333}
             ]},
-            "marcador":{"lng":-84.512031624848, "lat":10.327556521746},
+            "marcador":{"lng":-84.466826259719, "lat":10.376780141552},
             "link":"rsn.ucr.ac.cr/actividad-sismica/fallas-activas/4433-falla-florencia-palmira",
             "icono":"florencia_palmira"
         },
@@ -832,7 +832,7 @@
                 {"lng":-82.888325161183, "lat":9.7892217443879},
                 {"lng":-82.95124807716,  "lat":9.7376362907488}
             ]},
-            "marcador":{"lng":-82.95124807716,  "lat":9.7376362907488},
+            "marcador":{"lng":-82.916,  "lat":9.76},
             "link":"rsn.ucr.ac.cr/actividad-sismica/fallas-activas/4985-falla-la-estrella",
             "icono":"la_estrella"
         },
@@ -1183,7 +1183,7 @@
                 {"lng":-84.186190151929, "lat":9.3595746755621},
                 {"lng":-84.187784877198, "lat":9.3787113787796}
             ]},
-            "marcador":{"lng":-84.249979162654, "lat":9.2607017089387},
+            "marcador":{"lng":-84.187784877198, "lat":9.3787113787796},
             "link":"rsn.ucr.ac.cr/actividad-sismica/fallas-activas/3742-falla-paquita",
             "icono":"paquita"
         },
@@ -1193,7 +1193,7 @@
                 {"lng":-84.768275881362, "lat":10.299092492116},
                 {"lng":-84.711744459361, "lat":10.330760557218}
             ]},
-            "marcador":{"lng":-84.711744459361, "lat":10.330760557218},
+            "marcador":{"lng":-84.74, "lat":10.3155},
             "link":"rsn.ucr.ac.cr/actividad-sismica/fallas-activas/4570-falla-penas-blancas",
             "icono":"peñas_blancas"
         },
@@ -1232,7 +1232,7 @@
                 {"lng":-84.353632686276, "lat":10.304085905555},
                 {"lng":-84.358578433699, "lat":10.319353212818}
             ]},
-            "marcador":{"lng":-84.358578433699, "lat":10.319353212818},
+            "marcador":{"lng":-84.358578433699, "lat":10.293119248225},
             "link":"rsn.ucr.ac.cr/actividad-sismica/fallas-activas/4753-falla-porvenir",
             "icono":"porvenir"
         },
@@ -1499,7 +1499,7 @@
                 {"lng":-82.608426857662, "lat":9.5050826423293},
                 {"lng":-82.514216446907, "lat":9.5716154182863}
             ]},
-            "marcador":{"lng":-82.514216446907, "lat":9.5716154182863},
+            "marcador":{"lng":-82.548, "lat":9.543},
             "link":"rsn.ucr.ac.cr/actividad-sismica/fallas-activas/5844-falla-sixaola",
             "icono":"sixaola"
         },
@@ -1697,7 +1697,7 @@
                 {"lng":-84.398718690117, "lat":9.7805234063566},
                 {"lng":-84.387368600535, "lat":9.7855678906155}
             ]]},
-            "marcador":{"lng":-84.397962017479, "lat":9.7704344378388},
+            "marcador":{"lng":-84.420914420857, "lat":9.7507609492291},
             "link":"rsn.ucr.ac.cr/actividad-sismica/fallas-activas/3061-falla-tulin",
             "icono":"tulin"
         },
@@ -1811,7 +1811,7 @@
                     {"lng":-85.205961517906, "lat":10.81969187955}
                 ]
                 ]},
-            "marcador":{"lng":-85.209526665925, "lat":10.770671094296},
+            "marcador":{"lng":-85.210863596431, "lat":10.75997565024},
             "link":"rsn.ucr.ac.cr/actividad-sismica/fallas-activas/4518-fallas-de-la-cordillera-volcanica-de-guanacaste",
             "icono":"cv_guanacaste"
         }
