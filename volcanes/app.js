@@ -8,7 +8,7 @@ var marcador3='../volcanes/ic_volcano_3.svg';
 function initMap(){
 	map = new google.maps.Map(document.getElementById('map'), {
         maxZoom:12,
-        minZoom:7,
+        minZoom:8,
         zoom: 9,
         center: new google.maps.LatLng(10.5, -84.5),// con dimensiones de 847 x 600
         streetViewControl: false,
