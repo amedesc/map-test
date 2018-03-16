@@ -103,23 +103,49 @@ header .container {
   width: 270px !important;
 }
 
-#circle {
-    height:23px;
-    width:23px;
-    border-radius: 30px;
-    border: 1px solid rgba(84,110,122,0.4);
-    margin-top: -5px;
-    margin-left: -5px;
-}
-#nav-mobile .map-meta ul li span {
+
+
+.no-ring{
   display: inline-block;
   height: 13px;
   width: 13px;
   margin-right: 5px;
   border-radius: 30px;
-  background-color: #686868;
 }
 
+.rings::after {
+  display: block;
+  content: '';
+  height: 23px;
+  width: 23px;
+  border-radius: 30px;
+  border: 1px solid #686868;
+  margin-left: -9px;
+  margin-top: -18px;
+}
+
+.rings::before{
+  display: block;
+  content: '';
+  height: 13px;
+  width: 13px;
+  border-radius: 30px;
+  border: 1px solid #686868;
+  margin-left: -4px;
+  margin-top: -4px;
+}
+
+.rings {
+  display: inline-block;
+  height: 5px;
+  width: 5px;
+  border-radius: 30px;
+  background-color: #686868;
+  margin-left: 4px;
+  margin-bottom: 3px;
+  margin-right: 9px;
+  
+}
 
 
 #nav-mobile .map-meta ul li.normal span {
