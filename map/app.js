@@ -49,6 +49,15 @@ CustomMarker.prototype.remove = function () {
 
 
 /*
+    funcion para redondear la profundidad del sismo
+*/
+function round(value, step) {
+    step || (step = 1.0);
+    var inv = 1.0 / step;
+    return Math.round(value * inv) / inv;
+}
+
+/*
 	Función que crea el mapa
 */
 function initMap() {
@@ -365,6 +374,7 @@ google.maps.event.addDomListener(window, 'load', function () {
             var time = moment.tz(seism['origin_time'].toString().replace('Z', '+06:00'), "America/Costa_Rica").format('h:mm a');
             var date = moment.tz(seism['origin_time'].toString().replace('Z', '+06:00'), "America/Costa_Rica").format('DD-MM-YYYY');
             seism.localDateTime = moment.tz(seism['origin_time'].toString().replace('Z', '+06:00'), "America/Costa_Rica").format('DD-MM-YYYY h:mm a');
+            seism.depth=round(seism.depth, 0.5);
 
             if (index === 0) {
                 addData(time, date, seism.magnitude, seism.depth, seism.lat, seism.lon, seism.local);
