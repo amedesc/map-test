@@ -1,4 +1,5 @@
-{
+//Contiene el JSON con la información de las fallas
+var data={
     "fallas" : [
     	{
     		"name": "Agua Caliente",

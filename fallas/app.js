@@ -1,12 +1,11 @@
 var map;
-var url="https://raw.githubusercontent.com/amedesc/map-test/master/fallas/falla.json";
 var fallasLines=[], marcadores=[], color1="#ff6d00", color2='#0087E0', size=1.9;
 function initMap(){
 	map = new google.maps.Map(document.getElementById('map'), {
         maxZoom:12,
         minZoom:8,
         zoom: 9,
-        center: new google.maps.LatLng(10, -84),// con dimensiones de 847 x 600
+        center: new google.maps.LatLng(10, -84),// dimensions: 847 x 600
         streetViewControl: false,
         zoomControlOptions: {
               position: google.maps.ControlPosition.TOP_LEFT
@@ -153,8 +152,6 @@ function initMap(){
     });
 }
 
-
-
 function drawLines(location, name){
     if (location.hasOwnProperty('continuas') && location.hasOwnProperty('discontinuas')){
         addFallasCon(location.continuas,name);
@@ -168,8 +165,7 @@ function drawLines(location, name){
     }
 }
 function readJson(){
-    $.getJSON(url, function(doc) {
-        var fallas = doc.fallas;
+        var fallas = data.fallas;
         fallas.forEach(function(falla, index, arr) {
           drawLines(falla.location, falla.name);
           if (!falla.hasOwnProperty('link') && falla.hasOwnProperty('marcador')){
@@ -178,9 +174,7 @@ function readJson(){
           else if(falla.hasOwnProperty('link') && falla.hasOwnProperty('marcador')){
             addMarker(falla.marcador, falla.name, falla.icono, falla.link);
           }
-      });
-      
-    });
+      }); 
 }
 
 function addFallasDis(discontinuas, name){

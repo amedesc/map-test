@@ -1,4 +1,5 @@
-{
+//Contiene el JSON con la información de los volcanes
+var data= {
     "Volcanes":[
         {
             "name":"orosi",
