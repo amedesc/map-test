@@ -1,16 +1,11 @@
-var width = $(window).width();
-var heigth = $(window).height();
-var map;
-var markers = [];
-var allSeisms = [],
-    url = 'http://rsnapiusr.ucr.ac.cr/api/seisms/' + 'getWebMapSeisms' + '?access_token=559aca63553be4973f58dbc1';
-var normalIcon = '../map/icons/pin_verde.svg',
-    midIcon = '../map/icons/pin_naranja.svg',
-    dangerIcon = '../map/icons/pin_rojo.svg',
-    infowindow = new google.maps.InfoWindow();
+var width = $(window).width(), heigth = $(window).height(),
+map, markers = [], allSeisms = [],
+normalIcon = '../map/icons/pin_verde.svg',
+midIcon = '../map/icons/pin_naranja.svg',
+dangerIcon = '../map/icons/pin_rojo.svg',
+infowindow = new google.maps.InfoWindow();
 
 CustomMarker.prototype = new google.maps.OverlayView();
-
 /*
 	Definición del custommarker y sus funciones para agregarlo en el mapa y removerlo
 	El marcadaor consiste de 2 animaciones css pulse úbicado en el sismo más reciente
@@ -62,7 +57,6 @@ function round(value, step) {
 */
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
-        minZoom: 6,
         zoom: 8,
         center: new google.maps.LatLng(9.4, -84),
         streetViewControl: false,
@@ -351,7 +345,7 @@ google.maps.event.addDomListener(window, 'load', function () {
                 .add(-24, 'hours')
                 .unix();
             remove24(allSeisms.filter(function (seism, index, arr) {
-                return moment(seism['origin_time'].replace('Z', '+06:00'))
+                return moment(seism['date'].replace('Z', '+06:00'))
                     .unix() < twentyFourHoursAgo;
             }));
         }
@@ -371,15 +365,15 @@ google.maps.event.addDomListener(window, 'load', function () {
 
     function addMarkers(seisms) {
         seisms.forEach(function (seism, index, arr) {
-            var time = moment.tz(seism['origin_time'].toString().replace('Z', '+06:00'), "America/Costa_Rica").format('h:mm a');
-            var date = moment.tz(seism['origin_time'].toString().replace('Z', '+06:00'), "America/Costa_Rica").format('DD-MM-YYYY');
-            seism.localDateTime = moment.tz(seism['origin_time'].toString().replace('Z', '+06:00'), "America/Costa_Rica").format('DD-MM-YYYY h:mm a');
+            var time = moment.tz(seism['date'].toString().replace('Z', '+06:00'), "America/Costa_Rica").format('h:mm a');
+            var date = moment.tz(seism['date'].toString().replace('Z', '+06:00'), "America/Costa_Rica").format('DD-MM-YYYY');
+            seism.localDateTime = moment.tz(seism['date'].toString().replace('Z', '+06:00'), "America/Costa_Rica").format('DD-MM-YYYY h:mm a');
             seism.depth=round(seism.depth, 0.5);
-
+            var coord = seism.geolocation.coordinates;
             if (index === 0) {
-                addData(time, date, seism.magnitude, seism.depth, seism.lat, seism.lon, seism.local);
+                addData(time, date, seism.magnitude, seism.depth, coord[1], coord[0], seism.location);
                 var markerPulse = new CustomMarker({
-                    position: new google.maps.LatLng(seism.lat, seism.lon),
+                    position: new google.maps.LatLng(coord[1], coord[0]),
                     map: map
                 });
             }
@@ -393,8 +387,8 @@ google.maps.event.addDomListener(window, 'load', function () {
             if (index === 0) {
                 var marker = new google.maps.Marker({
                     map: map,
-                    position: new google.maps.LatLng(seism.lat, seism.lon),
-                    title: seism.local,
+                    position: new google.maps.LatLng(coord[1], coord[0]),
+                    title: seism.location,
                     icon: {
                         url: icon,
                         size: new google.maps.Size(13, 38),
@@ -407,8 +401,8 @@ google.maps.event.addDomListener(window, 'load', function () {
             else {
                 var marker = new google.maps.Marker({
                     map: map,
-                    position: new google.maps.LatLng(seism.lat, seism.lon),
-                    title: seism.local,
+                    position: new google.maps.LatLng(coord[1], coord[0]),
+                    title: seism.location,
                     icon: {
                         url: icon,
                         size: new google.maps.Size(13, 38),
@@ -421,17 +415,17 @@ google.maps.event.addDomListener(window, 'load', function () {
             var content = '<div id="iw-container">' +
                 '<b class="fecha_hora_infoWindow">Fecha y hora local: </b><span class="fecha_hora_infoWindow">' + seism.localDateTime + '</span></br>' +
                 '<b class="fecha_hora_infoWindow">Magnitud: </b><span class="fecha_hora_infoWindow">' + seism.magnitude + ' Mw</span></br>' +
-                '<b class="fecha_hora_infoWindow">Ubicaci&oacute;n: </b> <span class="fecha_hora_infoWindow">' + seism.local + '</span></br>' +
+                '<b class="fecha_hora_infoWindow">Ubicaci&oacute;n: </b> <span class="fecha_hora_infoWindow">' + seism.location + '</span></br>' +
                 '<b class="fecha_hora_infoWindow">Profundidad :</b> <span class="fecha_hora_infoWindow">' + seism.depth + ' km</span></br>' +
                 '<b class="fecha_hora_infoWindow">Latitud: </b> <span class="fecha_hora_infoWindow">' +
                 (
-                    Math.abs(seism.lat) +
-                    (seism.lat < 0 ? ' S' : ' N')
+                    Math.abs(coord[1]) +
+                    (coord[1] < 0 ? ' S' : ' N')
                 ) + '</span></br>' +
                 '<b class="fecha_hora_infoWindow">Longitud: </b> <span class="fecha_hora_infoWindow">' +
                 (
-                    Math.abs(seism.lon) +
-                    (seism.lat < 0 ? ' E' : ' O')
+                    Math.abs(coord[0]) +
+                    (coord[0] < 0 ? ' E' : ' O')
                 ) + '</span></br>' +
                 '</div>';
             google.maps.event.addListener(marker, 'click', (function (marker) {
@@ -496,12 +490,18 @@ google.maps.event.addDomListener(window, 'load', function () {
     }
 
     function getSeisms() {
-        $.get(url).then(function (result) {
-            allSeisms = result.seisms;
-            addMarkers(allSeisms);
-        }, function (error) {
-            console.error(error);
-        });
+        $.ajax({
+            type: 'GET',
+            url: 'http://163.178.105.69:2004/earthquake/?format=json',
+            beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3LCJ1c2VybmFtZSI6Im1hcF9yZXBvcnRlciIsImV4cCI6MTUyMjQ3NTE0MSwiZW1haWwiOiIifQ.re8Pp1oeEt8ZwBE24yvQG-v38n5cENPWIe4eT-9BqpY');},
+            success: function(res){
+                allSeisms = res.results;
+                addMarkers(allSeisms);
+            },
+            error: function(error) {
+                callbackErr(error,self)
+            }
+        })
     }
     getSeisms();
 });
