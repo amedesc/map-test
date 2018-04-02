@@ -44,15 +44,6 @@ CustomMarker.prototype.remove = function () {
 
 
 /*
-    funcion para redondear la profundidad del sismo
-*/
-function round(value, step) {
-    step || (step = 1.0);
-    var inv = 1.0 / step;
-    return Math.round(value * inv) / inv;
-}
-
-/*
 	Función que crea el mapa
 */
 function initMap() {
@@ -336,10 +327,8 @@ google.maps.event.addDomListener(window, 'load', function () {
         $('.active').removeClass('active');
         if ($this.hasClass('week-filter')) {
             add24();
-            currentFilter = 1;
         }
         else {
-            currentFilter = 2;
             var twentyFourHoursAgo = moment()
                 .utcOffset('-06:00')
                 .add(-24, 'hours')
@@ -368,7 +357,6 @@ google.maps.event.addDomListener(window, 'load', function () {
             var time = moment.tz(seism['date'].toString().replace('Z', '+06:00'), "America/Costa_Rica").format('h:mm a');
             var date = moment.tz(seism['date'].toString().replace('Z', '+06:00'), "America/Costa_Rica").format('DD-MM-YYYY');
             seism.localDateTime = moment.tz(seism['date'].toString().replace('Z', '+06:00'), "America/Costa_Rica").format('DD-MM-YYYY h:mm a');
-            seism.depth=round(seism.depth, 0.5);
             var coord = seism.geolocation.coordinates;
             if (index === 0) {
                 addData(time, date, seism.magnitude, seism.depth, coord[1], coord[0], seism.location);
@@ -425,7 +413,7 @@ google.maps.event.addDomListener(window, 'load', function () {
                 '<b class="fecha_hora_infoWindow">Longitud: </b> <span class="fecha_hora_infoWindow">' +
                 (
                     Math.abs(coord[0]) +
-                    (coord[0] < 0 ? ' E' : ' O')
+                    (coord[0] < 0 ? ' O' : ' E')
                 ) + '</span></br>' +
                 '</div>';
             google.maps.event.addListener(marker, 'click', (function (marker) {
@@ -490,11 +478,15 @@ google.maps.event.addDomListener(window, 'load', function () {
     }
 
     function getSeisms() {
+        var last15=new Date(), day, month, year;
+        last15.setDate(last15.getDate() - 15);
+        day = last15.getDate(), month = last15.getMonth()+1, year = last15.getFullYear();
         $.ajax({
             type: 'GET',
-            url: 'http://163.178.105.69:2004/earthquake/?format=json',
-            beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3LCJ1c2VybmFtZSI6Im1hcF9yZXBvcnRlciIsImV4cCI6MTUyMjQ3NTE0MSwiZW1haWwiOiIifQ.re8Pp1oeEt8ZwBE24yvQG-v38n5cENPWIe4eT-9BqpY');},
+            url: 'http://163.178.105.69:2004/momento/earthquake/?date_after='+year+'-'+month+'-'+day+'T12%3A00%3A00&limit=100',
+            beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3LCJ1c2VybmFtZSI6Im1hcF9yZXBvcnRlciIsImV4cCI6MTUyMjY1Mzc5OSwiZW1haWwiOiIifQ.98dOjYRv6VavSjgLeIYzPWBd8GHa9QEA-tu7MbhmbWc');},
             success: function(res){
+                console.log(res);
                 allSeisms = res.results;
                 addMarkers(allSeisms);
             },
