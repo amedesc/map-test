@@ -312,6 +312,19 @@ function initMap() {
     });
 }
 
+/*
+    función que colaca los datos del último sismo en la barra lateral
+*/
+function addData(time, date, magnitude, depth, lat, lon, local) {
+    $('[data-latest-seism="localDate"]').text(date);
+    $('[data-latest-seism="localTime"]').text(time);
+    $('[data-latest-seism="magnitude"]').text(magnitude + ' Mw');
+    $('[data-latest-seism="depth"]').text(depth + ' km');
+    $('[data-latest-seism="lat"]').text(Math.abs(lat) + (lat < 0 ? ' S' : ' N'));
+    $('[data-latest-seism="lon"]').text(Math.abs(lon) + (lat < 0 ? ' E' : ' O'));
+    $('[data-latest-seism="local"]').text(local);
+}
+
 
 // Main function
 google.maps.event.addDomListener(window, 'load', function () {
@@ -342,21 +355,11 @@ google.maps.event.addDomListener(window, 'load', function () {
     });
 
 
-    function addData(time, date, magnitude, depth, lat, lon, local) {
-        $('[data-latest-seism="localDate"]').text(date);
-        $('[data-latest-seism="localTime"]').text(time);
-        $('[data-latest-seism="magnitude"]').text(magnitude + ' Mw');
-        $('[data-latest-seism="depth"]').text(depth + ' km');
-        $('[data-latest-seism="lat"]').text(Math.abs(lat) + (lat < 0 ? ' S' : ' N'));
-        $('[data-latest-seism="lon"]').text(Math.abs(lon) + (lat < 0 ? ' E' : ' O'));
-        $('[data-latest-seism="local"]').text(local);
-    }
-
     function addMarkers(seisms) {
         seisms.forEach(function (seism, index, arr) {
             var time = moment.tz(seism['date'].toString().replace('Z', '+06:00'), "America/Costa_Rica").format('h:mm a');
             var date = moment.tz(seism['date'].toString().replace('Z', '+06:00'), "America/Costa_Rica").format('DD-MM-YYYY');
-            seism.localDateTime = moment.tz(seism['date'].toString().replace('Z', '+06:00'), "America/Costa_Rica").format('DD-MM-YYYY h:mm a');
+            seism.date = moment.tz(seism['date'].toString().replace('Z', '+06:00'), "America/Costa_Rica").format('DD-MM-YYYY h:mm a');
             var coord = seism.geolocation.coordinates;
             if (index === 0) {
                 addData(time, date, seism.magnitude, seism.depth, coord[1], coord[0], seism.location);
@@ -372,21 +375,6 @@ google.maps.event.addDomListener(window, 'load', function () {
             if (seism.magnitude >= 5) {
                 icon = dangerIcon;
             }
-            if (index === 0) {
-                var marker = new google.maps.Marker({
-                    map: map,
-                    position: new google.maps.LatLng(coord[1], coord[0]),
-                    title: seism.location,
-                    icon: {
-                        url: icon,
-                        size: new google.maps.Size(13, 38),
-                        anchor: new google.maps.Point(6.5, 38)
-                    },
-                    zIndex: google.maps.Marker.MAX_ZINDEX + 1
-                });
-
-            }
-            else {
                 var marker = new google.maps.Marker({
                     map: map,
                     position: new google.maps.LatLng(coord[1], coord[0]),
@@ -398,10 +386,9 @@ google.maps.event.addDomListener(window, 'load', function () {
                     }
 
                 });
-            }
 
             var content = '<div id="iw-container">' +
-                '<b class="fecha_hora_infoWindow">Fecha y hora local: </b><span class="fecha_hora_infoWindow">' + seism.localDateTime + '</span></br>' +
+                '<b class="fecha_hora_infoWindow">Fecha y hora local: </b><span class="fecha_hora_infoWindow">' + seism.date + '</span></br>' +
                 '<b class="fecha_hora_infoWindow">Magnitud: </b><span class="fecha_hora_infoWindow">' + seism.magnitude + ' Mw</span></br>' +
                 '<b class="fecha_hora_infoWindow">Ubicaci&oacute;n: </b> <span class="fecha_hora_infoWindow">' + seism.location + '</span></br>' +
                 '<b class="fecha_hora_infoWindow">Profundidad :</b> <span class="fecha_hora_infoWindow">' + seism.depth + ' km</span></br>' +
@@ -477,23 +464,48 @@ google.maps.event.addDomListener(window, 'load', function () {
         locate(0);
     }
 
-    function getSeisms() {
-        var last15=new Date(), day, month, year;
-        last15.setDate(last15.getDate() - 15);
-        day = last15.getDate(), month = last15.getMonth()+1, year = last15.getFullYear();
-        $.ajax({
-            type: 'GET',
-            url: 'http://163.178.105.69:2004/momento/earthquake/?date_after='+year+'-'+month+'-'+day+'T12%3A00%3A00&limit=100',
-            beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3LCJ1c2VybmFtZSI6Im1hcF9yZXBvcnRlciIsImV4cCI6MTUyMjY1Mzc5OSwiZW1haWwiOiIifQ.98dOjYRv6VavSjgLeIYzPWBd8GHa9QEA-tu7MbhmbWc');},
+
+    async function getToken(){
+        var data = {username:'map_reporter',password:'U09HlpZUbrBx'},
+        token;
+        const response =await $.ajax({
+            type: 'POST',
+            data: data,
+            url: 'http://163.178.105.69:2004/momento/api_token_auth/',
             success: function(res){
-                console.log(res);
-                allSeisms = res.results;
-                addMarkers(allSeisms);
+                token=res.token;
             },
             error: function(error) {
                 callbackErr(error,self)
             }
         })
+        return response
+    }
+
+    function getSeisms() {
+        var last15=new Date(), day, month, year, tokenn=getToken();
+        last15.setDate(last15.getDate() - 15);
+        day = last15.getDate(), month = last15.getMonth()+1, year = last15.getFullYear();
+        tokenn.then(
+            function(value) {
+                $.ajax({
+                    type: 'GET',
+                    url: 'http://163.178.105.69:2004/momento/earthquake/?date_after='+year+'-'+month+'-'+day+'T12%3A00%3A00&limit=100',
+                    beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'JWT '+value.token);},
+                    success: function(res){
+                        console.log(res);
+                        allSeisms = res.results;
+                        addMarkers(allSeisms);
+                    },
+                    error: function(error) {
+                        callbackErr(error,self)
+                    }
+                })
+            },
+            function(reason) {
+                console.log('onRejected handler', reason);
+            }
+        );
     }
     getSeisms();
 });
