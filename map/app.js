@@ -357,9 +357,10 @@ google.maps.event.addDomListener(window, 'load', function () {
 
     function addMarkers(seisms) {
         seisms.forEach(function (seism, index, arr) {
-            var time = moment.tz(seism['date'].toString().replace('Z', '+06:00'), "America/Costa_Rica").format('h:mm a');
-            var date = moment.tz(seism['date'].toString().replace('Z', '+06:00'), "America/Costa_Rica").format('DD-MM-YYYY');
-            seism.date = moment.tz(seism['date'].toString().replace('Z', '+06:00'), "America/Costa_Rica").format('DD-MM-YYYY h:mm a');
+            var fullDate=moment(seism.date);
+            seism.date=fullDate.tz("America/Costa_Rica").format('DD-MM-YYYY h:mm a');
+            var time=fullDate.format('h:mm a');
+            var date=fullDate.format('DD-MM-YYYY');
             var coord = seism.geolocation.coordinates;
             if (index === 0) {
                 addData(time, date, seism.magnitude, seism.depth, coord[1], coord[0], seism.location);
