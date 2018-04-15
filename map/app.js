@@ -48,6 +48,8 @@ CustomMarker.prototype.remove = function () {
 */
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
+        maxZoom:12,
+        minZoom:5,
         zoom: 8,
         center: new google.maps.LatLng(9.4, -84),
         streetViewControl: false,
@@ -357,64 +359,68 @@ google.maps.event.addDomListener(window, 'load', function () {
 
     function addMarkers(seisms) {
         seisms.forEach(function (seism, index, arr) {
-            var fullDate=moment(seism.date);
-            seism.date=fullDate.tz("America/Costa_Rica").format('DD-MM-YYYY h:mm a');
-            var time=fullDate.format('h:mm a');
-            var date=fullDate.format('DD-MM-YYYY');
-            var coord = seism.geolocation.coordinates;
-            if (index === 0) {
-                addData(time, date, seism.magnitude, seism.depth, coord[1], coord[0], seism.location);
-                var markerPulse = new CustomMarker({
-                    position: new google.maps.LatLng(coord[1], coord[0]),
-                    map: map
-                });
-            }
-            var icon = normalIcon;
-            if (seism.magnitude > 3.5) {
-                icon = midIcon;
-            }
-            if (seism.magnitude >= 5) {
-                icon = dangerIcon;
-            }
-                var marker = new google.maps.Marker({
-                    map: map,
-                    position: new google.maps.LatLng(coord[1], coord[0]),
-                    title: seism.location,
-                    icon: {
-                        url: icon,
-                        size: new google.maps.Size(13, 38),
-                        anchor: new google.maps.Point(6.5, 38)
-                    }
-
-                });
-
-            var content = '<div id="iw-container">' +
-                '<b class="fecha_hora_infoWindow">Fecha y hora local: </b><span class="fecha_hora_infoWindow">' + seism.date + '</span></br>' +
-                '<b class="fecha_hora_infoWindow">Magnitud: </b><span class="fecha_hora_infoWindow">' + seism.magnitude + ' Mw</span></br>' +
-                '<b class="fecha_hora_infoWindow">Ubicaci&oacute;n: </b> <span class="fecha_hora_infoWindow">' + seism.location + '</span></br>' +
-                '<b class="fecha_hora_infoWindow">Profundidad :</b> <span class="fecha_hora_infoWindow">' + seism.depth + ' km</span></br>' +
-                '<b class="fecha_hora_infoWindow">Latitud: </b> <span class="fecha_hora_infoWindow">' +
-                (
-                    Math.abs(coord[1]) +
-                    (coord[1] < 0 ? ' S' : ' N')
-                ) + '</span></br>' +
-                '<b class="fecha_hora_infoWindow">Longitud: </b> <span class="fecha_hora_infoWindow">' +
-                (
-                    Math.abs(coord[0]) +
-                    (coord[0] < 0 ? ' O' : ' E')
-                ) + '</span></br>' +
-                '</div>';
-            google.maps.event.addListener(marker, 'click', (function (marker) {
-                return function () {
-                    infowindow.setContent(content);
-                    infowindow.setOptions({
-                        maxWidth: 300
-                    });
-                    infowindow.open(map, marker);
+            if (seism.reviewed){
+                var fullDate=moment(seism.date);
+                seism.date=fullDate.tz("America/Costa_Rica").format('DD-MM-YYYY h:mm a');
+                var time=fullDate.format('h:mm a');
+                var date=fullDate.format('DD-MM-YYYY');
+                var coord = seism.geolocation.coordinates;
+                var icon = normalIcon, marker;
+                if (seism.magnitude > 3.5) {
+                    icon = midIcon;
                 }
-            })(marker));
-            markers.push(marker);
+                if (seism.magnitude >= 5) {
+                    icon = dangerIcon;
+                }
+                
+                marker = new google.maps.Marker({
+                        map: map,
+                        position: new google.maps.LatLng(coord[1], coord[0]),
+                        title: seism.location,
+                        icon: {
+                            url: icon,
+                            size: new google.maps.Size(13, 38),
+                            anchor: new google.maps.Point(6.5, 38)
+                        }
 
+                    });
+                if (index === 0) {
+                        addData(time, date, seism.magnitude, seism.depth, coord[1], coord[0], seism.location);
+                        var markerPulse = new CustomMarker({
+                            position: new google.maps.LatLng(coord[1], coord[0]),
+                            map: map,
+                            zindex:999
+                        });
+                        marker.setZIndex(999);
+                }
+
+                var content = '<div id="iw-container">' +
+                    '<b class="fecha_hora_infoWindow">Fecha y hora local: </b><span class="fecha_hora_infoWindow">' + seism.date + '</span></br>' +
+                    '<b class="fecha_hora_infoWindow">Magnitud: </b><span class="fecha_hora_infoWindow">' + seism.magnitude + ' Mw</span></br>' +
+                    '<b class="fecha_hora_infoWindow">Ubicaci&oacute;n: </b> <span class="fecha_hora_infoWindow">' + seism.location + '</span></br>' +
+                    '<b class="fecha_hora_infoWindow">Profundidad :</b> <span class="fecha_hora_infoWindow">' + seism.depth + ' km</span></br>' +
+                    '<b class="fecha_hora_infoWindow">Latitud: </b> <span class="fecha_hora_infoWindow">' +
+                    (
+                        Math.abs(coord[1]) +
+                        (coord[1] < 0 ? ' S' : ' N')
+                    ) + '</span></br>' +
+                    '<b class="fecha_hora_infoWindow">Longitud: </b> <span class="fecha_hora_infoWindow">' +
+                    (
+                        Math.abs(coord[0]) +
+                        (coord[0] < 0 ? ' O' : ' E')
+                    ) + '</span></br>' +
+                    '</div>';
+                google.maps.event.addListener(marker, 'click', (function (marker) {
+                    return function () {
+                        infowindow.setContent(content);
+                        infowindow.setOptions({
+                            maxWidth: 300
+                        });
+                        infowindow.open(map, marker);
+                    }
+                })(marker));
+                markers.push(marker);   
+            }
         });
         locate(0);
         google.maps.event.trigger(markers[0], 'click');
