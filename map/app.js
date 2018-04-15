@@ -482,7 +482,77 @@ google.maps.event.addDomListener(window, 'load', function () {
         return response
     }
 
-    function getSeisms() {
+
+
+//constantes
+var name = "map_reporter";
+var pass = "U09HlpZUbrBx";
+var limit = "150";
+//la fecha de hoy en el formato correcto, para pasarlo en el request
+
+fetch("http://163.178.105.69:2004/momento/api_token_auth/", {
+    method: "post",
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+    },
+    //serializar esta vara
+    body: JSON.stringify({
+        username: name,
+        password: pass
+    })
+})
+    .then((response) => {
+        if (response.status !== 200) {
+            console.log('¡Hay un problema! Status Code: ' +
+                response.status);
+            return;
+        }
+        // Examinar la respuesta del JSON y llamar al otro fetch
+        response.json().then(function (data) {
+            console.log(data);
+            var auth = "JWT " + data.token;
+            fetchQuakes(auth);
+        });
+    }
+    )
+    .catch(function (err) {
+        console.log('Fetch Error :-S', err);
+    });
+
+function fetchQuakes(auth) {
+    var last15=new Date(), day, month, year;
+        last15.setDate(last15.getDate() - 15);
+        day = last15.getDate(), month = last15.getMonth()+1, year = last15.getFullYear();
+    fetch("http://163.178.105.69:2004/momento/earthquake/?date_after="+year+"-"+month+"-"+day+"T12%3A00%3A00&limit=" + limit, {
+        method: "get",
+        headers: {
+            'Authorization': auth
+        },
+    })
+        .then((response) => {
+            if (response.status !== 200) {
+                console.log('¡Hay un problema! Status Code: ' +
+                    response.status);
+                return;
+            }
+            // Examinar la respuesta JSON y hacer otras varas con los earthquakes, llamar otra función, ojalá
+            response.json().then(function (data) {
+                console.log(data.results);
+                allSeisms = data.results;
+                addMarkers(allSeisms);
+            });
+        }
+        )
+        .catch(function (err) {
+            console.log('Fetch Error :-S', err);
+        });
+}
+
+
+
+
+    /*function getSeisms() {
         var last15=new Date(), day, month, year, tokenn=getToken();
         last15.setDate(last15.getDate() - 15);
         day = last15.getDate(), month = last15.getMonth()+1, year = last15.getFullYear();
@@ -507,7 +577,7 @@ google.maps.event.addDomListener(window, 'load', function () {
             }
         );
     }
-    getSeisms();
+    getSeisms();*/
 });
 
 google.maps.event.addListener(infowindow, 'domready', function () {
