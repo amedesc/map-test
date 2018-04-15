@@ -344,13 +344,10 @@ google.maps.event.addDomListener(window, 'load', function () {
             add24();
         }
         else {
-            var twentyFourHoursAgo = moment()
-                .utcOffset('-06:00')
-                .add(-24, 'hours')
-                .unix();
+            var twentyFourHoursAgo=moment().subtract(24, 'hours')
+            twentyFourHoursAgo=twentyFourHoursAgo.tz("America/Costa_Rica").format('DD-MM-YYYY h:mm a')
             remove24(allSeisms.filter(function (seism, index, arr) {
-                return moment(seism['date'].replace('Z', '+06:00'))
-                    .unix() < twentyFourHoursAgo;
+                return seism['date'] < twentyFourHoursAgo;
             }));
         }
         $this.addClass('active');
