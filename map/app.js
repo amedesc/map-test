@@ -359,9 +359,7 @@ google.maps.event.addDomListener(window, 'load', function () {
 
     function addMarkers(seisms) {
         seisms.forEach(function (seism, index, arr) {
-            var fullDate=moment(seism.date);
-            var time=fullDate.format('h:mm a');
-            var date=fullDate.format('DD-MM-YYYY');
+            var fullDate=moment(seism.date), time=fullDate.format('h:mm a'), date=fullDate.format('DD-MM-YYYY');
             var coord = seism.geolocation.coordinates;
             fullDate=fullDate.tz("America/Costa_Rica").format('DD-MM-YYYY h:mm a');
                 var icon = normalIcon, marker;
@@ -405,6 +403,9 @@ google.maps.event.addDomListener(window, 'load', function () {
         });
         locate(0);
         google.maps.event.trigger(markers[0], 'click');
+        google.maps.event.addListener(map, "click", function(event) {
+            infowindow.close();
+        });
     };
 
     function addContent(date, magnitude, location, depth, lat, lon){
