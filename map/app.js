@@ -48,7 +48,7 @@ CustomMarker.prototype.remove = function () {
 */
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
-        maxZoom:12,
+        maxZoom:15,
         minZoom:5,
         zoom: 8,
         center: new google.maps.LatLng(9.4, -84),
