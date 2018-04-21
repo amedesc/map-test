@@ -401,7 +401,7 @@ google.maps.event.addDomListener(window, 'load', function () {
                 });
                 marker.setZIndex(999);
             }
-            var content = addContent(seism.localDateTime, seism.magnitude, seism.location, seism.depth, seism.lat, seism.lon);
+            var content = addContent(seism.localDateTime, seism.magnitude, seism.local, seism.depth, seism.lat, seism.lon);
             google.maps.event.addListener(marker, 'click', (function (marker) {
                 return function () {
                     infowindow.setContent(content);
