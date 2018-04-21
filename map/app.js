@@ -62,7 +62,8 @@ function round(value, step) {
 */
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
-        minZoom: 6,
+        maxZoom:15,
+        minZoom:5,
         zoom: 8,
         center: new google.maps.LatLng(9.4, -84),
         streetViewControl: false,
@@ -375,14 +376,6 @@ google.maps.event.addDomListener(window, 'load', function () {
             var date = moment.tz(seism['origin_time'].toString().replace('Z', '+06:00'), "America/Costa_Rica").format('DD-MM-YYYY');
             seism.localDateTime = moment.tz(seism['origin_time'].toString().replace('Z', '+06:00'), "America/Costa_Rica").format('DD-MM-YYYY h:mm a');
             seism.depth=round(seism.depth, 0.5);
-
-            if (index === 0) {
-                addData(time, date, seism.magnitude, seism.depth, seism.lat, seism.lon, seism.local);
-                var markerPulse = new CustomMarker({
-                    position: new google.maps.LatLng(seism.lat, seism.lon),
-                    map: map
-                });
-            }
             var icon = normalIcon;
             if (seism.magnitude > 3.5) {
                 icon = midIcon;
@@ -390,50 +383,25 @@ google.maps.event.addDomListener(window, 'load', function () {
             if (seism.magnitude >= 5) {
                 icon = dangerIcon;
             }
+            var marker = new google.maps.Marker({
+                map: map,
+                position: new google.maps.LatLng(seism.lat, seism.lon),
+                title: seism.local,
+                icon: {
+                    url: icon,
+                    size: new google.maps.Size(13, 38),
+                    anchor: new google.maps.Point(6.5, 38)
+                }
+            });
             if (index === 0) {
-                var marker = new google.maps.Marker({
-                    map: map,
+                addData(time, date, seism.magnitude, seism.depth, seism.lat, seism.lon, seism.local);
+                var markerPulse = new CustomMarker({
                     position: new google.maps.LatLng(seism.lat, seism.lon),
-                    title: seism.local,
-                    icon: {
-                        url: icon,
-                        size: new google.maps.Size(13, 38),
-                        anchor: new google.maps.Point(6.5, 38)
-                    },
-                    zIndex: google.maps.Marker.MAX_ZINDEX + 1
+                    map: map
                 });
-
+                marker.setZIndex(999);
             }
-            else {
-                var marker = new google.maps.Marker({
-                    map: map,
-                    position: new google.maps.LatLng(seism.lat, seism.lon),
-                    title: seism.local,
-                    icon: {
-                        url: icon,
-                        size: new google.maps.Size(13, 38),
-                        anchor: new google.maps.Point(6.5, 38)
-                    }
-
-                });
-            }
-
-            var content = '<div id="iw-container">' +
-                '<b class="fecha_hora_infoWindow">Fecha y hora local: </b><span class="fecha_hora_infoWindow">' + seism.localDateTime + '</span></br>' +
-                '<b class="fecha_hora_infoWindow">Magnitud: </b><span class="fecha_hora_infoWindow">' + seism.magnitude + ' Mw</span></br>' +
-                '<b class="fecha_hora_infoWindow">Ubicaci&oacute;n: </b> <span class="fecha_hora_infoWindow">' + seism.local + '</span></br>' +
-                '<b class="fecha_hora_infoWindow">Profundidad :</b> <span class="fecha_hora_infoWindow">' + seism.depth + ' km</span></br>' +
-                '<b class="fecha_hora_infoWindow">Latitud: </b> <span class="fecha_hora_infoWindow">' +
-                (
-                    Math.abs(seism.lat) +
-                    (seism.lat < 0 ? ' S' : ' N')
-                ) + '</span></br>' +
-                '<b class="fecha_hora_infoWindow">Longitud: </b> <span class="fecha_hora_infoWindow">' +
-                (
-                    Math.abs(seism.lon) +
-                    (seism.lat < 0 ? ' E' : ' O')
-                ) + '</span></br>' +
-                '</div>';
+            var content = addContent(seism.localDateTime, seism.magnitude, seism.location, seism.depth, seism.lat, seism.lon);
             google.maps.event.addListener(marker, 'click', (function (marker) {
                 return function () {
                     infowindow.setContent(content);
@@ -448,8 +416,30 @@ google.maps.event.addDomListener(window, 'load', function () {
         });
         locate(0);
         google.maps.event.trigger(markers[0], 'click');
+        google.maps.event.addListener(map, "click", function(event) {
+            infowindow.close();
+        });
     };
 
+
+    function addContent(date, magnitude, location, depth, lat, lon){
+        return '<div id="iw-container">' +
+        '<b class="fecha_hora_infoWindow">Fecha y hora local: </b><span class="fecha_hora_infoWindow">' + date + '</span></br>' +
+        '<b class="fecha_hora_infoWindow">Magnitud: </b><span class="fecha_hora_infoWindow">' + magnitude + ' Mw</span></br>' +
+        '<b class="fecha_hora_infoWindow">Ubicaci&oacute;n: </b> <span class="fecha_hora_infoWindow">' + location + '</span></br>' +
+        '<b class="fecha_hora_infoWindow">Profundidad :</b> <span class="fecha_hora_infoWindow">' + depth + ' km</span></br>' +
+        '<b class="fecha_hora_infoWindow">Latitud: </b> <span class="fecha_hora_infoWindow">' +
+        (
+            Math.abs(lat) +
+            (lat < 0 ? ' S' : ' N')
+        ) + '</span></br>' +
+        '<b class="fecha_hora_infoWindow">Longitud: </b> <span class="fecha_hora_infoWindow">' +
+        (
+            Math.abs(lon) +
+            (lon < 0 ? ' O' : ' E')
+        ) + '</span></br>' +
+        '</div>';
+    }
 
     function locate(marker_id) {
         var myMarker = markers[marker_id];
@@ -529,7 +519,7 @@ google.maps.event.addListener(infowindow, 'domready', function () {
     var iwCloseBtn = iwOuter.next();
     // Apply the desired effect to the close button
     iwCloseBtn.css({
-        opacity: '1', // by default the close button has an opacity of 0.7
+        opacity: '0', // by default the close button has an opacity of 0.7
         right: '50px', top: '23px', // button repositioning
         border: '0px'
     });
