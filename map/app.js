@@ -1,8 +1,8 @@
 var width = $(window).width(), heigth = $(window).height(),
 map, markers = [], allSeisms = [],
-normalIcon = '../map/icons/pin_verde.svg',
-midIcon = '../map/icons/pin_naranja.svg',
-dangerIcon = '../map/icons/pin_rojo.svg',
+normalIcon = './icons/pin_verde.svg',
+midIcon = './icons/pin_naranja.svg',
+dangerIcon = './icons/pin_rojo.svg',
 infowindow = new google.maps.InfoWindow();
 
 CustomMarker.prototype = new google.maps.OverlayView();
