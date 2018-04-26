@@ -1,14 +1,14 @@
 .pulse-first {
 	position: absolute;
 	margin-top: -17.5px;
-	margin-left: -17.5px;
+	margin-left: -18px;
 	z-index: -9999;
 }
 
 .pulse-second {
 	position: absolute;
 	margin-top: -17.5px;
-	margin-left: -17.5px;
+	margin-left: -18px;
 	z-index: -9999;
 }
 

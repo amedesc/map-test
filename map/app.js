@@ -1,13 +1,10 @@
-var width = $(window).width();
-var heigth = $(window).height();
-var map;
-var markers = [];
-var allSeisms = [],
-    url = 'http://rsnapiusr.ucr.ac.cr/api/seisms/' + 'getWebMapSeisms' + '?access_token=559aca63553be4973f58dbc1';
-var normalIcon = './icons/pin_verde.svg',
-    midIcon = './icons/pin_naranja.svg',
-    dangerIcon = './icons/pin_rojo.svg',
-    infowindow = new google.maps.InfoWindow();
+var width = $(window).width(), heigth = $(window).height(),
+map, markerPulse, markers = [], allSeisms = [], flag24,
+url = 'http://rsnapiusr.ucr.ac.cr/api/seisms/' + 'getWebMapSeisms' + '?access_token=559aca63553be4973f58dbc1',
+normalIcon = './icons/pin_verde.svg',
+midIcon = './icons/pin_naranja.svg',
+dangerIcon = './icons/pin_rojo.svg',
+infowindow = new google.maps.InfoWindow();
 
 CustomMarker.prototype = new google.maps.OverlayView();
 
@@ -395,7 +392,7 @@ google.maps.event.addDomListener(window, 'load', function () {
             });
             if (index === 0) {
                 addData(time, date, seism.magnitude, seism.depth, seism.lat, seism.lon, seism.local);
-                var markerPulse = new CustomMarker({
+                markerPulse = new CustomMarker({
                     position: new google.maps.LatLng(seism.lat, seism.lon),
                     map: map
                 });
@@ -442,20 +439,24 @@ google.maps.event.addDomListener(window, 'load', function () {
     }
 
     function locate(marker_id) {
-        var myMarker = markers[marker_id];
-        var div = map.getDiv();
-        map.panTo(new google.maps.LatLng(myMarker.position.lat(), myMarker.position.lng()));
-        if (width <= 640) {
-            map.setZoom(9);
-        }
-        else if (width >= 1280) {
-            map.setZoom(8);
-        }
-        else {
-            map.setZoom(9);
-        }
+        if (marker_id>=0){
+            var myMarker = markers[marker_id];
+            map.panTo(new google.maps.LatLng(myMarker.position.lat(), myMarker.position.lng()));
+            if (width <= 640) {
+                map.setZoom(9);
+            }
+            else if (width >= 1280) {
+                map.setZoom(8);
+            }
+            else {
+                map.setZoom(9);
+            }
 
-        fixInfoWindow();
+            fixInfoWindow();
+        }
+        else{
+            map.panTo(new google.maps.LatLng(9.4, -84));
+        }
     }
 
     function fixInfoWindow() {
@@ -474,15 +475,26 @@ google.maps.event.addDomListener(window, 'load', function () {
                 markers[i].setMap(map);
             }
         }
+        if(flag24){
+            markerPulse.setMap(map);
+            flag24=false;
+        }
         locate(0);
     }
 
     function remove24(seisms) {
-        var i = markers.length - seisms.length;
+        //var i = markers.length - seisms.length;
+        var i =0;
         for (i; i < markers.length; i++) {
             markers[i].setMap(null);
         }
         locate(0);
+        var eso=markers.length+7;
+        if (eso=markers.length){
+            markerPulse.setMap(null);
+            locate(-1);
+            flag24=true;
+        }
     }
 
     function getSeisms() {
