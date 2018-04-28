@@ -1,5 +1,5 @@
 var width = $(window).width(), heigth = $(window).height(),
-map, markers = [], allSeisms = [],
+map, markers = [], allSeisms = [], flag24, markerPulse,
 normalIcon = './icons/pin_verde.svg',
 midIcon = './icons/pin_naranja.svg',
 dangerIcon = './icons/pin_rojo.svg',
@@ -381,7 +381,7 @@ google.maps.event.addDomListener(window, 'load', function () {
                     });
                 if (index === 0) {
                         addData(time, date, seism.magnitude, seism.depth, coord[1], coord[0], seism.location);
-                        var markerPulse = new CustomMarker({
+                        markerPulse = new CustomMarker({
                             position: new google.maps.LatLng(coord[1], coord[0]),
                             map: map,
                             zindex:-1
@@ -454,19 +454,29 @@ google.maps.event.addDomListener(window, 'load', function () {
     }
 
 
+    function remove24(index) {
+        var i = markers.length - index;
+        for (i; i < markers.length; i++) {
+            markers[i].setMap(null);
+        }
+        locate(0);
+        if (index>=markers.length){
+            markerPulse.setMap(null);
+            flag24=true;
+            alert('No se han detectado sismos en las \u00faltimas 24 horas');
+        }
+    }
+
+
     function add24() {
         for (var i = 0; i < markers.length; i++) {
             if (markers[i].map == null) {
                 markers[i].setMap(map);
             }
         }
-        locate(0);
-    }
-
-    function remove24(index) {
-        var i = markers.length - index;
-        for (i; i < markers.length; i++) {
-            markers[i].setMap(null);
+        if(flag24){
+            markerPulse.setMap(map);
+            flag24=false;
         }
         locate(0);
     }
