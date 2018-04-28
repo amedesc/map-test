@@ -340,10 +340,8 @@ google.maps.event.addDomListener(window, 'load', function () {
         $('.active').removeClass('active');
         if ($this.hasClass('week-filter')) {
             add24();
-            currentFilter = 1;
         }
         else {
-            currentFilter = 2;
             var twentyFourHoursAgo = moment()
                 .utcOffset('-06:00')
                 .add(-24, 'hours')
@@ -483,17 +481,16 @@ google.maps.event.addDomListener(window, 'load', function () {
     }
 
     function remove24(seisms) {
-        //var i = markers.length - seisms.length;
-        var i =0;
+        var lengthSeisms=seisms.length
+        var i = markers.length - lengthSeisms;
         for (i; i < markers.length; i++) {
             markers[i].setMap(null);
         }
         locate(0);
-        var eso=markers.length+7;
-        if (eso=markers.length){
+        if (lengthSeisms>=markers.length){
             markerPulse.setMap(null);
-            locate(-1);
             flag24=true;
+            alert('No se han detectado sismos en las \u00faltimas 24 horas');
         }
     }
 
