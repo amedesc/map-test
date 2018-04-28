@@ -531,9 +531,7 @@ google.maps.event.addListener(infowindow, 'domready', function () {
     var iwCloseBtn = iwOuter.next();
     // Apply the desired effect to the close button
     iwCloseBtn.css({
-        opacity: '0', // by default the close button has an opacity of 0.7
-        right: '50px', top: '23px', // button repositioning
-        border: '0px'
+        display:'none'
     });
 
 
