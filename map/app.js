@@ -361,6 +361,8 @@ google.maps.event.addDomListener(window, 'load', function () {
         seisms.forEach(function (seism, index, arr) {
             var fullDate=moment(seism.date), time=fullDate.format('h:mm a'), date=fullDate.format('DD-MM-YYYY');
             var coord = seism.geolocation.coordinates;
+            coord[0]=redondeo(coord[0], 3);
+            coord[1]=redondeo(coord[1], 3);
             fullDate=fullDate.tz("America/Costa_Rica").format('DD-MM-YYYY h:mm a');
                 var icon = normalIcon, marker;
                 if (seism.magnitude > 3.5) {
@@ -442,6 +444,12 @@ google.maps.event.addDomListener(window, 'load', function () {
         }
 
         fixInfoWindow();
+    }
+
+    function redondeo(numero, decimales){
+        var flotante = parseFloat(numero);
+        var resultado = Math.round(flotante*Math.pow(10,decimales))/Math.pow(10,decimales);
+        return resultado;
     }
 
     function fixInfoWindow() {
