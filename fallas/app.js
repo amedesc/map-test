@@ -205,6 +205,7 @@ function addFallasDis(discontinuas, name){
                     name: name
                 })
         }
+        ////////////
 }
 
 function addFallasCon(continuas, name){
